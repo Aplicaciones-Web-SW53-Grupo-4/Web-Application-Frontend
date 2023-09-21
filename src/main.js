@@ -4,8 +4,9 @@ import PrimeVue from "primevue/config";
 import router from "@/router";
 import i18n from "@/i18n";
 import "primevue/resources/primevue.min.css";
-import "primevue/resources/themes/arya-purple/theme.css";
+import "primevue/resources/themes/arya-blue/theme.css";
 import "primeicons/primeicons.css";
+import Image from 'primevue/image';
 // import Button from "primevue/button";
 // import InputText from "primevue/inputtext";
 // import Calendar from "primevue/calendar";
@@ -21,5 +22,6 @@ app.use(i18n);
 app.use(PrimeVue);
 app.use(router);
 app.component("pv-toolbar",Toolbar);
+app.component("pv-images",Image);
 
 app.mount("#app");
