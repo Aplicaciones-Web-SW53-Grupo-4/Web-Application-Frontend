@@ -16,7 +16,6 @@ import Toolbar from 'primevue/toolbar';
 // import Menubar from 'primevue/menubar';
 // import Card from 'primevue/card';
 
-
 const app =createApp(App);
 app.use(i18n);
 app.use(PrimeVue);
