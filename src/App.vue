@@ -1,14 +1,12 @@
 <script setup>
 
-import logincomponent from "@/components/login-component.vue";
 </script>
 
 <template>
 
-
- <logincomponent></logincomponent>
-
-
+  <main>
+    <router-view></router-view>
+  </main>
 </template>
 
 
