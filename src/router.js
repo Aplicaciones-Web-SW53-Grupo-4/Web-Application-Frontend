@@ -1,9 +1,10 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+import loginComponent from "@/components/login-component.vue";
 
 
 
 const routes = [
-    // { path: "/users", component: announcementComponent },
+    { path: "/", component:loginComponent },
 ];
 
 const router = createRouter({
