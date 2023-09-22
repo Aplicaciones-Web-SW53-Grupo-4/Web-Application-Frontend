@@ -1,7 +1,7 @@
 
 
 <template >
-  <div class="toolbar">
+  <div class="toolbar-1">
     <pv-toolbar class=" toolbar-1 text-white font-bold m-0 flex flex-wrap " role="navigation" aria-label="Toolbar">
       <template #start >
         <pv-images src="https://i.postimg.cc/rF47Qr56/ai-de-logo-Mesa-de-trabajo-1.png" alt="logo" width="100"/>
@@ -16,8 +16,8 @@
   <div class="card">
     <pv-card class="p-cardcontent" style="width: 30em;height: 33em" >
       <template #header>
-        <pv-button id="btn" label="Arrendatario"  />
-        <pv-button id="btn" label="Propietario"  style="margin-left: 1em" />
+        <router-link to="/login-tenant"><pv-button id="btn" label="Arrendatario"/></router-link>
+        <router-link to="/login-owner"> <pv-button id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
       </template>
       <template #title >
           <span style="color:black;font-family: Poppins,serif ">
@@ -29,8 +29,8 @@
 
         <div class="inputp flex justify-content-center">
             <span>
-              <label for="email" style="font-family: Poppins,serif ;color:black">Correo electrónico  </label>
-              <pv-inputtext id="email" v-model:form="text" aria-describedby="username-help" class="inputp" type="text"/>
+              <label for="email" style="font-family: Poppins,serif ;color:black">Correo electrónico </label>
+              <pv-inputtext id="email" v-model="email" aria-describedby="username-help" class="inputp" type="text" required/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ">Enter your email.</small>
             </span>
 
@@ -41,8 +41,8 @@
 
         <div class="inputp flex justify-content-center">
               <span >
-                <label for="password" style="font-family: Poppins,serif;color:black">Contraseña</label>
-                <pv-inputtext id="password" v-model=value  aria-describedby="username-help" class="inputp" type="password" />
+                <label for="password" style="font-family: Poppins,serif;color:black">Contraseña </label>
+                <pv-inputtext id="password" v-model="password"  aria-describedby="username-help" class="inputp" type="password" required  />
                 <small id="password-help" style="color:black;font-family: Poppins,serif ">Enter your password.</small>
 
               </span>
@@ -50,25 +50,33 @@
 
       </template>
       <template #footer>
-        <pv-button  id="btnprimary" label="ACCEDER"  /><br><br>
-        <label style="font-family: Poppins,serif;color:black">No tienes una cuenta <a href="#"  class="ov-btn-slide-left" style="color:#40019A">Inscríbete</a></label>
+        <pv-button  type="submit" id="btnprimary" label="ACCEDER COMO PROPIETARIO"  /><br><br>
+        <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
+
+
 
       </template>
     </pv-card>
+
   </div>
 
 </template>
 
 
-<script setup>
-import { ref } from 'vue';
-const value = ref(null);
-</script>
 
+<script>
 
-<script >
+import UseApiService from "@/services/use-api-services";
+
 export default {
-  name: "login.component",
+  name: "Login-Owner-component",
+  data() {
+    return {
+      email: "",
+      password: "",
+      useApiService: new UseApiService(),
+    };
+  },
 };
 </script>
 
@@ -79,6 +87,7 @@ export default {
 .toolbar-1{
   background-color: #14131B;
   padding:9px;
+  border: none;
 }
 .card{
   display: flex;
@@ -122,13 +131,11 @@ export default {
   font-family: 'Poppins',sans-serif;
   box-shadow: none;
 }
-#btn:hover{
+#btn:focus{
   color:#40019A;
-  background-color: transparent;
-  border:rebeccapurple;
-  box-shadow: none;
-
 }
+
+
 #btnprimary{
   background-color: #40019A;
   color: white;
@@ -136,5 +143,8 @@ export default {
   border: transparent;
   width: 19em;
   height: 2.5em;
+}
+#btnprimary:hover{
+  background-color:#310077;
 }
 </style>
