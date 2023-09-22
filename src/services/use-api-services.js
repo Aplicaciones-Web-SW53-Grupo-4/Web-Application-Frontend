@@ -11,10 +11,10 @@ class UseApiService {
           .then((json) => (this.users = json));*/
         return http.get("users");
     }
-
     getByid(id) {
         return http.get("users/" + id);
     }
+
     create(body) {
         return http.post("users", body);
     }
