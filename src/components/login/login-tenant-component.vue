@@ -49,7 +49,7 @@
 
       </template>
       <template #footer>
-        <router-link to="/rent-tenant-major"> <pv-button  id="btnprimary" label="ACCEDER COMO ARRENDATARIO"  /></router-link> <br><br>
+        <router-link to="/.."> <pv-button  id="btnprimary" label="ACCEDER COMO ARRENDATARIO"  /></router-link> <br><br>
         <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
 
 
