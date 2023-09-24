@@ -27,22 +27,43 @@
 
     <br>
     <div id="titulo-seccion">
-      <label >ALQUILER</label>
+      <label >Pago de Alquiler</label>
     </div>
 
     <div class="card">
       <pv-card class="p-cardcontent" >
 
-
-
-        <template #content>
-          <router-link to="/cash-payment"><pv-button  id="btnprimary" label="ALQUILAR NUEVO AUTO"  /></router-link>
+        <template #title>
+          Datos de Alquiler:
         </template>
 
-
-
+        <template #content>
+          <p class="text-content">
+            Precio de Alquiler:  <br>
+            Tiempo de Alquiler: <br>
+            Fecha de inicio de contrato: <br>
+            Fecha de fin de contrato:<br>
+            Lugar de recojo y entrega de vehículo:
+          </p>
+          <pv-images src="https://i.postimg.cc/Xqj4zfvb/RT-V-0c7166c16ff74073b65851f7f0b360ed.jpg"  width="400" />
+        </template>
       </pv-card>
-    </div>
+    </div><br><br>
+    <div class="footerpag">
+      <div id="titulo-footer">
+        <label >El dia del inicio del contrato  debera ir a recojer el vehículo
+          y además debera efectuar el pago de manera personal </label>
+      </div>
+      <br><br>
+<label style="margin-left: 60px;font-family: 'Poppins',sans-serif;margin-right: 60px">Indicar hora del recojo del vehiculo: </label><br><br>
+    <pv-inputtext type="text" v-model="hour" style="margin-right: 60px;margin-left: 60px"/>
+    <pv-button label="Confirmar fecha de alquiler" style="justify-content: flex-end;background-color: #40019A"/><br><br><br><br><br>
+
+
+</div>
+
+
+
 
 
   </div>
@@ -58,12 +79,12 @@ import UseApiService from "@/services/use-api-services";
 
 
 export default {
-  name: "rent-tenant-major",
+  name: "cash-payment",
+
 
   data() {
     return {
-      email: "",
-      password: "",
+      hour: "",
       useApiService: new UseApiService(),
     };
   },
@@ -82,19 +103,13 @@ export default {
   border: none;
 }
 #titulo-seccion{
-  font-size: 40px;
+  font-size: 35px;
   font-family: 'Poppins',sans-serif;
-  color:#40019A;
+  color:#14131B;
   margin-left:20px;
   font-weight: bold;
 }
-.p-cardcontent{
-  width: 30em;
-  height: 33em;
 
-  align-content: flex-start;
-  display: flex;
-}
 .control{
   display:inline-block;
 }
@@ -121,26 +136,33 @@ export default {
 }
 .card{
   display: flex;
+  -webkit-justify-content: center;
 }
 .p-cardcontent{
-  background-color: white;
   box-shadow: 3px 4px 4px #14131B;
-  -webkit-justify-content: center;
+  -webkit-justify-content:flex-start;
+  width: 90em;
+  height: 30em;
+  background-color: whitesmoke;
+  align-content: flex-start;
+  display: flex;
+
+}
+.text-content{
+  font-size: 30px;
+  display:inline-block;
+  margin-right: 100px;
+}
+#titulo-footer{
+  font-size: 20px;
+  font-family: 'Poppins',sans-serif;
+  color:#14131B;
+  margin-left:20px;
+  text-align: center;
+  margin-right: 20px;
 
 }
 
-#btnprimary{
-  background-color: #40019A;
-  color: white;
-  box-shadow: transparent;
-  border: none;
-
-  margin-top: 150px;
-  align-content: center;
-}
-#btnprimary:hover{
-  background-color:#310077;
-}
 @media all and (max-width: 840px) {
   .imglogo{
     place-content: center;
@@ -155,18 +177,9 @@ export default {
     font-size: 30px;
   }
   .p-cardcontent{
-    width: 20em;height: 30em;
+    width: 40em;height: 50em;
   }
 
-  #btnprimary{
-    background-color: #40019A;
-    color: white;
-    box-shadow: transparent;
-    border: transparent;
-    width: 20em;
-    font-size: 10px;
-    height: 2.5em;
-  }
 }
 
 </style>
