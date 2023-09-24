@@ -4,7 +4,7 @@ import PrimeVue from "primevue/config";
 import router from "@/router";
 import i18n from "@/i18n";
 import "primevue/resources/primevue.min.css";
-import "primevue/resources/themes/arya-blue/theme.css";
+import "primevue/resources/themes/bootstrap4-light-blue/theme.css";
 import "primeicons/primeicons.css";
 import Image from 'primevue/image';
 import Card from 'primevue/card';

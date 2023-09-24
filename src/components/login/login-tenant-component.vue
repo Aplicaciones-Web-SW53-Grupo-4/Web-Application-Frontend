@@ -6,14 +6,16 @@
   <div class="toolbar-1">
     <pv-toolbar class=" toolbar-1 text-white font-bold m-0 flex flex-wrap " role="navigation" aria-label="Toolbar">
       <template #start >
+        <div class="imglogo">
         <pv-images src="https://i.postimg.cc/rF47Qr56/ai-de-logo-Mesa-de-trabajo-1.png" alt="logo" width="100"/>
+        </div>
       </template>
     </pv-toolbar >
   </div>
 
   <br>
   <div class="card">
-    <pv-card class="p-cardcontent" style="width: 30em;height: 33em" >
+    <pv-card class="p-cardcontent"  >
       <template #header>
         <router-link to="/"><pv-button  class="combobox"  id="btn" label="Arrendatario"/></router-link>
         <router-link to="/login-owner"> <pv-button class="combobox" id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
@@ -47,7 +49,7 @@
 
       </template>
       <template #footer>
-        <pv-button  id="btnprimary" label="ACCEDER COMO ARRENDATARIO"  /><br><br>
+        <router-link to="/rent-tenant-major"> <pv-button  id="btnprimary" label="ACCEDER COMO ARRENDATARIO"  /></router-link> <br><br>
         <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
 
 
@@ -96,6 +98,9 @@ export default {
   background-color: #14131B;
   padding:9px;
   border: none;
+}
+.p-cardcontent{
+  width: 30em;height: 33em
 }
 .card{
   display: flex;
@@ -154,5 +159,30 @@ export default {
 }
 #btnprimary:hover{
   background-color:#310077;
+}
+
+@media all and (max-width: 840px) {
+  .imglogo{
+    place-content: center;
+  }
+  .p-cardcontent{
+    width: 20em;height: 35em;
+  }
+  .inputp{
+    display: flex;
+    min-width: 100px;
+
+    text-align: start;
+    justify-content: center;
+  }
+  #btnprimary{
+    background-color: #40019A;
+    color: white;
+    box-shadow: transparent;
+    border: transparent;
+    width: 20em;
+    font-size: 10px;
+    height: 2.5em;
+  }
 }
 </style>
