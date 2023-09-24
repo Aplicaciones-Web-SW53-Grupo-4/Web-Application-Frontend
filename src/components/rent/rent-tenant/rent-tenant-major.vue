@@ -36,7 +36,7 @@
 
 
         <template #content>
-          <router-link to="/cash-payment"><pv-button  id="btnprimary" label="ALQUILAR NUEVO AUTO"  /></router-link>
+          <router-link to="/online-payment"><pv-button  id="btnprimary" label="ALQUILAR NUEVO AUTO"  /></router-link>
         </template>
 
 

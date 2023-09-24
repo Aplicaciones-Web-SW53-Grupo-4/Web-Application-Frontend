@@ -53,7 +53,6 @@
         <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
 
 
-
       </template>
     </pv-card>
   </div>
