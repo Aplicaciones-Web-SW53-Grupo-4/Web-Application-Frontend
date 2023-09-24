@@ -11,14 +11,12 @@ import Card from 'primevue/card';
 import Button from "primevue/button";
 import InputText from 'primevue/inputtext';
 import Password from 'primevue/password';
-// import InputText from "primevue/inputtext";
-// import Calendar from "primevue/calendar";
-// import DataTable from 'primevue/datatable';
-// import Column from 'primevue/column';
-// import SelectButton from 'primevue/selectbutton';
+import Calendar from "primevue/calendar";
+ import DataTable from 'primevue/datatable';
+import SelectButton from 'primevue/selectbutton';
 import Toolbar from 'primevue/toolbar';
-// import Menubar from 'primevue/menubar';
-// import Card from 'primevue/card';
+import Menubar from 'primevue/menubar';
+
 
 const app =createApp(App);
 app.use(i18n);

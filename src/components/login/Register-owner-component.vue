@@ -1,12 +1,13 @@
 
 
 <template>
+  <div class="template-mayor">
   <div class="toolbar-1">
-  <pv-toolbar class=" toolbar-1 text-white font-bold m-0 flex flex-wrap " role="navigation" aria-label="Toolbar">
-    <template #start >
-      <pv-images src="https://i.postimg.cc/rF47Qr56/ai-de-logo-Mesa-de-trabajo-1.png" alt="logo" width="100"/>
-    </template>
-  </pv-toolbar >
+    <pv-toolbar class=" toolbar-1 text-white font-bold m-0 flex flex-wrap " role="navigation" aria-label="Toolbar">
+      <template #start >
+        <pv-images src="https://i.postimg.cc/rF47Qr56/ai-de-logo-Mesa-de-trabajo-1.png" alt="logo" width="100"/>
+      </template>
+    </pv-toolbar >
   </div>
 
 
@@ -81,16 +82,16 @@
 
       </template>
       <template #footer>
-        <pv-button id="btnprimary" label="REGÍSTRATE COMO ARRENDATARIO"  /><br><br>
-        <label style="font-family: Poppins,serif;color:black">¿Ya tienes una cuenta? </label> <router-link to="/login-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inicia sesión</b></a></router-link><br><br>
-        <label style="font-family: Poppins,serif;color:black">No eres Arrendatario </label> <router-link to="/Register-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Regístrate como Propietario</b></a></router-link>
+        <pv-button id="btnprimary" label="REGÍSTRATE COMO PROPIETARIO"  /><br><br>
+        <label style="font-family: Poppins,serif;color:black">¿Ya tienes una cuenta? </label> <router-link to="/login-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inicia sesión</b></a></router-link><br><br>
+        <label style="font-family: Poppins,serif;color:black">No eres Propietario </label> <router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Regístrate como Arrendatario</b></a></router-link>
 
 
 
       </template>
     </pv-card>
   </div>
-
+  </div>
 </template>
 
 
@@ -98,7 +99,7 @@
 import UseApiService from "@/services/use-api-services";
 
 export default {
-  name: "Register-tenant-component",
+  name: "Register-owner-component",
   data() {
     return {
       email: "",
@@ -116,6 +117,13 @@ export default {
 
 
 <style scoped>
+.template-mayor{
+  background-image: url("https://i.postimg.cc/cCbb1f2m/pexels-pixabay-417192.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1000px;
+}
 .toolbar-1{
   background-color: #14131B;
   padding:9px;
@@ -165,12 +173,12 @@ export default {
 
 
 .card{
-   display: flex;
-   justify-content: center;
-   text-align: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 
 
- }
+}
 .p-cardcontent{
   background-color: white;
 

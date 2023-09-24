@@ -1,6 +1,8 @@
 
 
-<template >
+<template  >
+  <div class="template-mayor">
+
   <div class="toolbar-1">
     <pv-toolbar class=" toolbar-1 text-white font-bold m-0 flex flex-wrap " role="navigation" aria-label="Toolbar">
       <template #start >
@@ -9,15 +11,12 @@
     </pv-toolbar >
   </div>
 
-  <div >
-    <!--      <pv-images src="https://i.postimg.cc/cCbb1f2m/pexels-pixabay-417192.jpg" alt="Image" width="1000" />-->
-  </div>
   <br>
   <div class="card">
     <pv-card class="p-cardcontent" style="width: 30em;height: 33em" >
       <template #header>
-        <router-link to="/login-tenant"><pv-button id="btn" label="Arrendatario"/></router-link>
-        <router-link to="/login-owner"> <pv-button id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
+        <router-link to="/"><pv-button  class="combobox"  id="btn" label="Arrendatario"/></router-link>
+        <router-link to="/login-owner"> <pv-button class="combobox" id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
       </template>
       <template #title >
           <span style="color:black;font-family: Poppins,serif ">
@@ -25,51 +24,53 @@
           </span>
       </template>
 
+
       <template #content>
 
         <div class="inputp flex justify-content-center">
             <span>
-              <label for="email" style="font-family: Poppins,serif ;color:black">Correo electrónico </label>
-              <pv-inputtext id="email" v-model="email" aria-describedby="username-help" class="inputp" type="text" required/>
+              <label for="email" style="font-family: Poppins,serif ;color:black">Correo electrónico  </label>
+              <pv-inputtext id="email" v-model="email" aria-describedby="username-help" class="inputp" type="text"/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ">Enter your email.</small>
             </span>
-
-
         </div>
 
         <br>
 
         <div class="inputp flex justify-content-center">
               <span >
-                <label for="password" style="font-family: Poppins,serif;color:black">Contraseña </label>
-                <pv-inputtext id="password" v-model="password"  aria-describedby="username-help" class="inputp" type="password" required  />
+                <label for="password" style="font-family: Poppins,serif;color:black">Contraseña</label>
+                <pv-inputtext id="password" v-model="password"  aria-describedby="username-help" class="inputp" type="password" />
                 <small id="password-help" style="color:black;font-family: Poppins,serif ">Enter your password.</small>
-
               </span>
         </div>
 
       </template>
       <template #footer>
-        <pv-button  type="submit" id="btnprimary" label="ACCEDER COMO PROPIETARIO"  /><br><br>
+        <pv-button  id="btnprimary" label="ACCEDER COMO ARRENDATARIO"  /><br><br>
         <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
 
 
 
       </template>
     </pv-card>
-
   </div>
 
+
+  </div>
 </template>
+
 
 
 
 <script>
 
+
 import UseApiService from "@/services/use-api-services";
 
+
 export default {
-  name: "Login-Owner-component",
+  name: "Login-Tenant-component",
   data() {
     return {
       email: "",
@@ -78,12 +79,19 @@ export default {
     };
   },
 };
+
 </script>
 
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-
+.template-mayor{
+  background-image: url("https://i.postimg.cc/cCbb1f2m/pexels-pixabay-417192.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 750px;
+}
 .toolbar-1{
   background-color: #14131B;
   padding:9px;
@@ -132,7 +140,7 @@ export default {
   box-shadow: none;
 }
 #btn:focus{
-  color:#40019A;
+ color:#40019A;
 }
 
 
