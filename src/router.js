@@ -6,6 +6,7 @@ import registerOwnerComponent from "@/components/register/Register-owner-compone
 import rentTenantMajor from "@/components/rent/rent-tenant/rent-tenant-major.vue";
 import cashPayment from "@/components/rent/rent-tenant/cash-payment.vue";
 import onlinePayment from "@/components/rent/rent-tenant/online-payment.vue";
+import rentOwnerMajor from "@/components/rent/rent-owner/rent-owner-major.vue";
 
 
 
@@ -15,6 +16,7 @@ const routes = [
     { path: "/Register-tenant", component: registerTenantComponent},
     { path: "/Register-owner", component: registerOwnerComponent},
     { path: "/rent-tenant-major", component: rentTenantMajor},
+    { path: "/rent-owner-major", component: rentOwnerMajor},
     { path: "/cash-payment", component: cashPayment},
     { path: "/online-payment", component: onlinePayment},
 ];

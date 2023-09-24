@@ -51,7 +51,7 @@
 
       </template>
       <template #footer>
-        <pv-button  type="submit" id="btnprimary" label="ACCEDER COMO PROPIETARIO"  /><br><br>
+        <router-link to="/rent-owner-major"> <pv-button  id="btnprimary" label="ACCEDER COMO PROPIETARIO"  /></router-link> <br><br>
         <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
 
 
