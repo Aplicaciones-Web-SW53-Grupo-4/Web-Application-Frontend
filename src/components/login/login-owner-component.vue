@@ -10,9 +10,6 @@
     </pv-toolbar >
   </div>
 
-  <div >
-    <!--      <pv-images src="https://i.postimg.cc/cCbb1f2m/pexels-pixabay-417192.jpg" alt="Image" width="1000" />-->
-  </div>
   <br>
   <div class="card">
     <pv-card class="p-cardcontent" style="width: 30em;height: 33em" >
@@ -51,7 +48,7 @@
 
       </template>
       <template #footer>
-        <router-link to="/.."> <pv-button  id="btnprimary" label="ACCEDER COMO PROPIETARIO"  /></router-link> <br><br>
+        <router-link to="/profile-request"> <pv-button  id="btnprimary" label="ACCEDER COMO PROPIETARIO"  /></router-link> <br><br>
         <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
 
 

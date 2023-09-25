@@ -2,13 +2,11 @@
 
 <template  >
   <div class="template-mayor">
-
    <toolbar-bar-tenant></toolbar-bar-tenant>
     <br>
     <div id="titulo-seccion">
       <label >Pago de Alquiler</label>
     </div>
-
     <div class="card">
       <pv-card class="p-cardcontent" >
         <template #title>
@@ -42,8 +40,8 @@
 
 
 
-<script>
 
+<script>
 import UseApiService from "@/services/use-api-services";
 import ToolbarBarTenant from "@/components/rent/rent-tenant/toolbar-bar-tenant.vue";
 export default {
@@ -56,8 +54,8 @@ export default {
     };
   },
 };
-
 </script>
+
 
 
 <style scoped>
@@ -81,7 +79,6 @@ export default {
   background-color: whitesmoke;
   align-content: flex-start;
   display: flex;
-
 }
 .text-content{
   font-size: 30px;

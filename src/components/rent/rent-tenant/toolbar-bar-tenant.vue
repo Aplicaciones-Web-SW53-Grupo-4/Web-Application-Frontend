@@ -70,5 +70,27 @@ export default {
     align-content: center;
     text-align: center;
   }
+  #btnrouter{
+    margin-left: 10px;
+    margin-right:10px;
+    width: 150px;
+    font-size:10px ;
+    justify-content: center;
+    background-color: whitesmoke ;
+    color:#14131B;border:none;
+    box-shadow: #14131B;
+    font-weight: bold;
+  }
+  #btnrouter:hover{
+    background-color:#14131B;
+    box-shadow: none;
+    font-weight: bold;
+    color:white;
+  }
+  #btnrouter:focus{
+    color:#40019A;
+    box-shadow: none;
+    font-weight: bold;
+  }
 }
 </style>
