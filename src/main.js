@@ -17,6 +17,7 @@ import SelectButton from 'primevue/selectbutton';
 import Toolbar from 'primevue/toolbar';
 import Menubar from 'primevue/menubar';
 import Divider from 'primevue/divider';
+import Message from 'primevue/message';
 
 
 const app =createApp(App);
@@ -30,5 +31,6 @@ app.component("pv-button",Button);
 app.component("pv-inputtext",InputText);
 app.component("pv-inputpassword",Password);
 app.component("pv-divider",Divider);
+app.component("pv-message",Message);
 
 app.mount("#app");
