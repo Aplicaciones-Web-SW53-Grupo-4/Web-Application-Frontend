@@ -16,6 +16,7 @@ import Calendar from "primevue/calendar";
 import SelectButton from 'primevue/selectbutton';
 import Toolbar from 'primevue/toolbar';
 import Menubar from 'primevue/menubar';
+import Divider from 'primevue/divider';
 
 
 const app =createApp(App);
@@ -28,5 +29,6 @@ app.component("pv-card",Card);
 app.component("pv-button",Button);
 app.component("pv-inputtext",InputText);
 app.component("pv-inputpassword",Password);
+app.component("pv-divider",Divider);
 
 app.mount("#app");
