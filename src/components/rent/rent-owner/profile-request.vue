@@ -7,18 +7,54 @@
     <div id="titulo-seccion">
       <label >ALQUILER</label>
     </div>
-    <div style="text-align: end ">
-      <label style="font-family: 'Poppins',sans-serif;">Encuentra todas las solisitudes disponibles </label><br>
+    <div style="text-align: start">
+      <label style="font-family: 'Poppins',sans-serif;"> Nombre del solicitante: /////</label><br>
     </div>
-    <pv-message :closable="false" icon="pi pi-send" style="color: #14131B;font-family: 'Poppins',sans-serif;background-color: whitesmoke" >Piero Torres Arias envio una solicitud de alquiler del
-      vehículo Toyota Prius &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <router-link to="/profile-request"> <a  style="color: #40019A;text-decoration: none;font-weight: bold;display:inline-block;">Ver Solicitud</a></router-link>
-    </pv-message>
-    <pv-message :closable="false" icon="pi pi-send" style="color: #14131B;font-family: 'Poppins',sans-serif;background-color: whitesmoke" >Jorge Paredes Cano  envio una solicitud de alquiler del
-      vehículo Toyota Prius   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <router-link to="/profile-request"> <a  style="color: #40019A;text-decoration: none;font-weight: bold;display:inline-block;">Ver Solicitud</a></router-link>
-    </pv-message>
   </div>
+
+  <div class="card">
+
+    <pv-card class="p-cardcontent" style="width: 58em;height: 33em" >
+      <template #header>
+
+        <div class="grid">
+          <div class="col1">
+            <label  class="textinfo">Nombres:   </label><br><br>
+            <label  class="textinfo">Apellidos: </label><br><br>
+            <label  class="textinfo">Celular: </label><br><br>
+            <label  class="textinfo">Teléfono: </label><br>
+          </div>
+          <div class="col2">
+            <center><img src="https://i.postimg.cc/FFqf7CRJ/usuario-1.png" alt="logo" class="img"/></center>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="col3">
+            <label style="font-family: 'Poppins',sans-serif;color: #40019A">Solicito Alquilar /// </label><br>
+
+          </div>
+          <div class="col4">
+            <div class="card flex flex-wrap gap-3  justify-content-center">
+
+              <router-link to="/..."><pv-button label="VERIFICAR"  style="margin-left: 10px;  font-family: 'Poppins',sans-serif;background-color: #40019A;border: none"/></router-link>
+              <router-link to="/..."><pv-button label="PROCESO"   style="margin-left: 10px;  font-family: 'Poppins',sans-serif;background-color: dimgray;border: none"/></router-link>
+            </div>
+            <div style="margin-top:10px">
+              <router-link to="/..."><pv-button label="Aceptar Alquiler" style="margin-left: 10px;  font-family: 'Poppins',sans-serif;background-color: deepskyblue;border: none" /></router-link>
+              <router-link to="/..."><pv-button label="Rechazar Alquiler" style="margin-left: 10px;  font-family: 'Poppins',sans-serif;background-color: red;border: none" /></router-link>
+
+            </div>
+          </div>
+        </div>
+
+      </template>
+
+    </pv-card>
+  </div>
+
+
+
+
 </template>
 
 
@@ -34,7 +70,6 @@ import ToolbarBar from "@/components/rent/rent-owner/toolbar-bar-owner.vue";
 export default {
   name: "profile-request",
   components: {ToolbarBar},
-
 
   data() {
     return {
@@ -57,10 +92,121 @@ export default {
   font-weight: bold;
   display:inline-block;
 }
+.textinfo{
+  color:black;font-family: Poppins,serif;
+  -webkit-justify-content: flex-start;
+
+}
+.img{
+  width: 270px;
+  align-content: center;
+
+}
+.grid{
+  display: flex;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+
+}
+.col1{
+  width: 10em;
+}
+.col2{
+  display: flex;
+  text-align: center;
+  margin-left: 20px;
+  flex-direction: column;
+  width: 40em;
+  justify-items: flex-end;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+.grid2{
+  display: flex;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+}
+.col3{
+  width: 10em;
+  flex-wrap: wrap; align-content: flex-start;
+}
+.col4{
+  display: flex;
+  text-align: center;
+  margin:20px;
+  padding: 10px;
+  flex-direction: column;
+  width: 40em;
+  justify-items: flex-end;
+  justify-content: flex-end;
+  align-content: flex-end;
+}
+
+
+.card{
+  display: flex;
+  justify-content: center;
+
+
+
+
+}
+.p-cardcontent{
+  background-color: whitesmoke;
+  padding: 30px;
+
+}
 @media all and (max-width: 840px) {
   #titulo-seccion{
     font-size: 30px;
   }
+  .img{
+    width: 100px;
+  }
+  .grid{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+    width: 20em;
+  }
+  .col1{
+    width: 20em;
+  }
+  .col2{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 18em;
+    justify-items: flex-end;
+    justify-content: flex-end;
+    align-content: flex-end;
+  }
+  .grid2{
+    display: flex;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+    width: 20em;
+  }
+  .col3{
+    width: 10em;
+    flex-wrap: wrap; align-content: flex-start;
+  }
+  .col4{
+    display: flex;
+    text-align: center;
+    margin:10px;
+    padding: 5px;
+    flex-direction: column;
+    width: 30em;
+  }
+
+
 }
 
 </style>

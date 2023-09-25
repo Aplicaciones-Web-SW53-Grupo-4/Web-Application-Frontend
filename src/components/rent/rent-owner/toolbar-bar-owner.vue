@@ -19,15 +19,14 @@ export default {
         <router-link to="/notification-owner"> <pv-button id="btnrouter">NOTIFICACIONES</pv-button> </router-link>
         <router-link to="/rent-owner"> <pv-button id="btnrouter">ALQUILER</pv-button> </router-link>
         <router-link to="/perfil-owner"> <a><pv-images id="btnrouter" src="https://i.postimg.cc/FFqf7CRJ/usuario-1.png" alt="logo" width="40"/></a> </router-link>
-
       </div>
-
     </template>
   </pv-toolbar>
   </div>
 </template>
 
 <style scoped>
+
 .toolbar-1{
   background-color: #D9D9D9;
   padding:9px;
@@ -61,11 +60,34 @@ export default {
   .imglogo{
     place-content: center;
   }
+
   .control{
-    display:block;
+    display:inline-block;
     float:none;
     align-content: center;
     text-align: center;
+  }
+  #btnrouter{
+    margin-left: 10px;
+    margin-right:10px;
+    width: 150px;
+    font-size:10px ;
+    justify-content: center;
+    background-color: whitesmoke ;
+    color:#14131B;border:none;
+    box-shadow: #14131B;
+    font-weight: bold;
+  }
+  #btnrouter:hover{
+    background-color:#14131B;
+    box-shadow: none;
+    font-weight: bold;
+    color:white;
+  }
+  #btnrouter:focus{
+    color:#40019A;
+    box-shadow: none;
+    font-weight: bold;
   }
 }
 </style>
