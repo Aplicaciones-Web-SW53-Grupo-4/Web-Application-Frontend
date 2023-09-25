@@ -3,28 +3,7 @@
 <template  >
   <div class="template-mayor">
 
-    <div class="toolbar-1">
-
-      <pv-toolbar  class="toolbar-1 mx-auto">
-        <template #start>
-          <div class="imglogo">
-            <pv-images src="https://i.postimg.cc/8Cdxqmbc/ai-de-logwww-Mesa-de-trabajo-1.png" alt="logo" width="100"/>
-          </div>
-        </template>
-        <template #end>
-          <div class="control">
-            <router-link to="/main-page-tenant"> <pv-button  id="btnrouter">INICIO</pv-button> </router-link>
-            <router-link to="/share-tenant"> <pv-button id="btnrouter">BUSCAR AUTOS</pv-button> </router-link>
-            <router-link to="/maintenance-tenant"> <pv-button id="btnrouter">MANTENIMIENTO</pv-button> </router-link>
-            <router-link to="/rent-tenant"> <pv-button id="btnrouter">ALQUILER</pv-button> </router-link>
-            <router-link to="/requests-tenant"> <pv-button id="btnrouter">SOLICITUDES</pv-button> </router-link>
-          </div>
-
-        </template>
-      </pv-toolbar>
-
-    </div>
-
+    <toolbar-bar-tenant></toolbar-bar-tenant>
     <br>
     <div id="titulo-seccion">
       <label >Pago de Alquiler</label>
@@ -130,8 +109,10 @@
 <script>
 
 import UseApiService from "@/services/use-api-services";
+import ToolbarBarTenant from "@/components/rent/rent-tenant/toolbar-bar-tenant.vue";
 export default {
   name: "online-payment",
+  components: {ToolbarBarTenant},
 
 
   data() {
@@ -153,42 +134,11 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-
-.toolbar-1{
-  background-color: #D9D9D9;
-  padding:9px;
-  border: none;
-}
 #titulo-seccion{
   font-size: 35px;
   font-family: 'Poppins',sans-serif;
   color:#14131B;
   margin-left:20px;
-  font-weight: bold;
-}
-
-.control{
-  display:inline-block;
-}
-#btnrouter{
-  margin-left: 10px;
-  margin-right:10px;
-  width: 160px;
-  justify-content: center;
-  background-color: whitesmoke ;
-  color:#14131B;border:none;
-  box-shadow: #14131B;
-  font-weight: bold;
-}
-#btnrouter:hover{
-  background-color:#14131B;
-  box-shadow: none;
-  font-weight: bold;
-  color:white;
-}
-#btnrouter:focus{
-  color:#40019A;
-  box-shadow: none;
   font-weight: bold;
 }
 .card{
@@ -255,15 +205,6 @@ export default {
   background-color:#310077;
 }
 @media all and (max-width: 840px) {
-  .imglogo{
-    place-content: center;
-  }
-  .control{
-    display:block;
-    float:none;
-    align-content: center;
-    text-align: center;
-  }
   #titulo-seccion{
     font-size: 30px;
   }
