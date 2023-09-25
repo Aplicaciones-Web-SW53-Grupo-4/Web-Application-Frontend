@@ -30,6 +30,11 @@
     <div id="titulo-seccion">
       <label >ALQUILER</label>
     </div>
+    <div style="text-align: end ">
+      <label style="font-family: 'Poppins',sans-serif;">Agiliza tus pago afiliando tu cuenta  de banco con MODO </label><br>
+      <router-link to="/.."><pv-button   label="Afiliar Cuenta con MODO" style="background-color: #40019A;font-family: 'Poppins',sans-serif;box-shadow: none" /></router-link><br>
+    </div>
+
 
     <div class="card">
       <pv-card class="p-cardcontent" >
@@ -37,7 +42,7 @@
 
 
         <template #content>
-          <router-link to="/online-payment"><pv-button  id="btnprimary" label="ALQUILAR NUEVO AUTO"  /></router-link>
+          <router-link to="/.."><pv-button  id="btnprimary" label="AGREGAR AUTO"  /></router-link>
         </template>
 
 
@@ -88,14 +93,9 @@ export default {
   color:#40019A;
   margin-left:20px;
   font-weight: bold;
+  display:inline-block;
 }
-.p-cardcontent{
-  width: 30em;
-  height: 33em;
 
-  align-content: flex-start;
-  display: flex;
-}
 .control{
   display:inline-block;
 }
@@ -124,9 +124,14 @@ export default {
   display: flex;
 }
 .p-cardcontent{
-  background-color: white;
+  background-color: whitesmoke;
   box-shadow: 3px 4px 4px #14131B;
   -webkit-justify-content: center;
+  width: 30em;
+  height: 33em;
+  align-content: flex-start;
+  display: flex;
+
 
 }
 
