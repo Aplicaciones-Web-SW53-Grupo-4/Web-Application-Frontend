@@ -18,8 +18,8 @@
   <div class="card">
     <pv-card class="p-cardcontent" style="width: 30em;height: 55em" >
       <template #header>
-        <router-link to="/Register-tenant"><pv-button id="btn" label="Arrendatario"/></router-link>
-        <router-link to="/Register-owner"> <pv-button id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
+        <router-link to="/register-tenant"><pv-button id="btn" label="Arrendatario"/></router-link>
+        <router-link to="/register-owner"> <pv-button id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
 
       </template>
       <template #title >
@@ -84,7 +84,7 @@
       <template #footer>
         <pv-button id="btnprimary" label="REGÍSTRATE COMO PROPIETARIO"  /><br><br>
         <label style="font-family: Poppins,serif;color:black">¿Ya tienes una cuenta? </label> <router-link to="/login-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inicia sesión</b></a></router-link><br><br>
-        <label style="font-family: Poppins,serif;color:black">No eres Propietario </label> <router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Regístrate como Arrendatario</b></a></router-link>
+        <label style="font-family: Poppins,serif;color:black">No eres Propietario </label> <router-link to="/register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Regístrate como Arrendatario</b></a></router-link>
 
 
 
@@ -99,7 +99,7 @@
 import UseApiService from "@/services/use-api-services";
 
 export default {
-  name: "Register-owner-component",
+  name: "register-owner-component",
   data() {
     return {
       email: "",
