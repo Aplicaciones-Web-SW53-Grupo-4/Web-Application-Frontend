@@ -1,6 +1,6 @@
 <script >
 export default {
-  name: "toolbar-bar",
+  name: "toolbar-bar-owner",
 }
 </script>
 
@@ -14,11 +14,11 @@ export default {
     </template>
     <template #end>
       <div class="control">
-        <router-link to="/main-page-tenant"> <pv-button  id="btnrouter">INICIO</pv-button> </router-link>
+        <router-link to="/home-owner"> <pv-button  id="btnrouter">INICIO</pv-button> </router-link>
         <router-link to="/vehicle-registration-owner"> <pv-button id="btnrouter">REGISTRO VEHICULAR</pv-button> </router-link>
         <router-link to="/notification-owner"> <pv-button id="btnrouter">NOTIFICACIONES</pv-button> </router-link>
         <router-link to="/rent-owner"> <pv-button id="btnrouter">ALQUILER</pv-button> </router-link>
-        <router-link to="/perfil-owner"> <a><pv-images id="btnrouter" src="https://i.postimg.cc/FFqf7CRJ/usuario-1.png" alt="logo" width="40"/></a> </router-link>
+        <router-link to="/profile-owner"> <a><pv-images id="btnrouter" src="https://i.postimg.cc/FFqf7CRJ/usuario-1.png" alt="logo" width="40"/></a> </router-link>
       </div>
     </template>
   </pv-toolbar>
@@ -28,31 +28,35 @@ export default {
 <style scoped>
 
 .toolbar-1{
-  background-color: #D9D9D9;
+  background-color: white;
   padding:9px;
   border: none;
 }
 .control{
-  display:inline-block;
+
 }
 #btnrouter{
   margin-left: 10px;
   margin-right:10px;
   width: 200px;
   justify-content: center;
-  background-color: whitesmoke ;
-  color:#14131B;border:none;
-  box-shadow: #14131B;
+  background-color: white ;
+  color:black;
+  border: 3px white;
+  border-radius:30px;
+  box-shadow: black;
   font-weight: bold;
+
 }
 #btnrouter:hover{
-  background-color:#14131B;
+  background-color:#01A1FF;
   box-shadow: none;
+  border: none;
   font-weight: bold;
   color:white;
 }
 #btnrouter:focus{
-  color:#40019A;
+  color:black;
   box-shadow: none;
   font-weight: bold;
 }
@@ -73,19 +77,20 @@ export default {
     width: 150px;
     font-size:10px ;
     justify-content: center;
-    background-color: whitesmoke ;
-    color:#14131B;border:none;
-    box-shadow: #14131B;
+    background-color: white ;
+    color:black;
+    border:none;
+    box-shadow: black;
     font-weight: bold;
   }
   #btnrouter:hover{
-    background-color:#14131B;
+    background-color:white;
     box-shadow: none;
     font-weight: bold;
     color:white;
   }
   #btnrouter:focus{
-    color:#40019A;
+    color:white;
     box-shadow: none;
     font-weight: bold;
   }

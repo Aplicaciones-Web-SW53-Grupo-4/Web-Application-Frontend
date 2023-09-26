@@ -2,16 +2,20 @@
 
 <template  >
   <div class="template-mayor">
-
-   <toolbar-bar-tenant></toolbar-bar-tenant>
+    <toolbar-bar></toolbar-bar>
     <br>
     <div id="titulo-seccion">
       <label >ALQUILER</label>
     </div>
+    <div style="text-align: end ">
+      <label style="font-family: 'Poppins',sans-serif;">Agiliza tus pago afiliando tu cuenta  de banco con MODO </label><br>
+      <router-link to="/.."><pv-button   label="Afiliar Cuenta con MODO" style="background-color: #40019A;font-family: 'Poppins',sans-serif;box-shadow: none" /></router-link><br>
+    </div>
+
     <div class="card">
       <pv-card class="p-cardcontent" >
         <template #content>
-          <router-link to="/online-payment"><pv-button  id="btnprimary" label="ALQUILAR NUEVO AUTO"  /></router-link>
+          <router-link to="/.."><pv-button  id="btnprimary" label="AGREGAR AUTO"  /></router-link>
         </template>
       </pv-card>
     </div>
@@ -19,12 +23,18 @@
 </template>
 
 
+
+
 <script>
+
+
 import UseApiService from "@/services/use-api-services";
-import ToolbarBarTenant from "@/components/rent/rent-tenant/toolbar-bar-tenant.vue";
+import ToolbarBar from "@/components/toolbar/toolbar-bar-owner-component.vue";
+
+
 export default {
-  name: "rent-tenant-major",
-  components: {ToolbarBarTenant},
+  name: "rent-owner-major",
+  components: {ToolbarBar},
 
   data() {
     return {
@@ -47,28 +57,26 @@ export default {
   color:#40019A;
   margin-left:20px;
   font-weight: bold;
-}
-.p-cardcontent{
-  width: 30em;
-  height: 33em;
-
-  align-content: flex-start;
-  display: flex;
+  display:inline-block;
 }
 .card{
   display: flex;
 }
 .p-cardcontent{
-  background-color: white;
+  background-color: whitesmoke;
   box-shadow: 3px 4px 4px #14131B;
   -webkit-justify-content: center;
+  width: 30em;
+  height: 33em;
+  align-content: flex-start;
+  display: flex;
 }
+
 #btnprimary{
   background-color: #40019A;
   color: white;
   box-shadow: transparent;
   border: none;
-
   margin-top: 150px;
   align-content: center;
 }
@@ -82,7 +90,6 @@ export default {
   .p-cardcontent{
     width: 20em;height: 30em;
   }
-
   #btnprimary{
     background-color: #40019A;
     color: white;
@@ -93,4 +100,5 @@ export default {
     height: 2.5em;
   }
 }
+
 </style>

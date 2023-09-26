@@ -18,8 +18,8 @@
   <div class="card">
     <pv-card class="p-cardcontent" style="width: 30em;height: 55em" >
       <template #header>
-        <router-link to="/"><pv-button id="btn" label="Arrendatario"/></router-link>
-        <router-link to="/Register-owner"> <pv-button id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
+        <router-link to="/register-tenat"><pv-button id="btn" label="Arrendatario"/></router-link>
+        <router-link to="/register-owner"> <pv-button id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
 
       </template>
       <template #title >

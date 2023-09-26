@@ -109,7 +109,7 @@
 <script>
 
 import UseApiService from "@/services/use-api-services";
-import ToolbarBarTenant from "@/components/rent/rent-tenant/toolbar-bar-tenant.vue";
+import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
 export default {
   name: "online-payment",
   components: {ToolbarBarTenant},

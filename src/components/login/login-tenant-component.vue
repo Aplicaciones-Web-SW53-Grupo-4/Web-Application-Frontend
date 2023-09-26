@@ -1,5 +1,3 @@
-
-
 <template  >
   <div class="template-mayor">
 
@@ -17,7 +15,7 @@
   <div class="card">
     <pv-card class="p-cardcontent"  >
       <template #header>
-        <router-link to="/"><pv-button  class="combobox"  id="btn" label="Arrendatario"/></router-link>
+        <router-link to="/login-tenant"><pv-button  class="combobox"  id="btn" label="Arrendatario"/></router-link>
         <router-link to="/login-owner"> <pv-button class="combobox" id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
       </template>
       <template #title >
@@ -49,7 +47,7 @@
 
       </template>
       <template #footer>
-        <router-link to="/.."> <pv-button  id="btnprimary" label="ACCEDER COMO ARRENDATARIO"  /></router-link> <br><br>
+        <router-link to="/home-tenant"> <pv-button  id="btnprimary" label="ACCEDER COMO ARRENDATARIO"  /></router-link> <br><br>
         <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
 
 
@@ -60,10 +58,6 @@
 
   </div>
 </template>
-
-
-
-
 <script>
 
 
@@ -71,7 +65,7 @@ import UseApiService from "@/services/use-api-services";
 
 
 export default {
-  name: "Login-Tenant-component",
+  name: "login-Tenant-component",
   data() {
     return {
       email: "",
@@ -82,8 +76,6 @@ export default {
 };
 
 </script>
-
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 .template-mayor{
@@ -91,7 +83,7 @@ export default {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 750px;
+  height: 98vh;
 }
 .toolbar-1{
   background-color: #14131B;

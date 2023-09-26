@@ -64,7 +64,7 @@
 
 
 import UseApiService from "@/services/use-api-services";
-import ToolbarBar from "@/components/rent/rent-owner/toolbar-bar-owner.vue";
+import ToolbarBar from "@/components/toolbar/toolbar-bar-owner-component.vue";
 
 
 export default {
