@@ -6,7 +6,6 @@ export default {
 
 <template>
   <div class="toolbar-1">
-
     <pv-toolbar  class="toolbar-1 mx-auto">
       <template #start>
         <div class="imglogo">
