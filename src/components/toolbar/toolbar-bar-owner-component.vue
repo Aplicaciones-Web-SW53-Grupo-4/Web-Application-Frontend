@@ -15,7 +15,7 @@ export default {
     <template #end>
       <div class="control">
         <router-link to="/home-owner"> <pv-button  id="btnrouter">INICIO</pv-button> </router-link>
-        <router-link to="/vehicle-registration-owner"> <pv-button id="btnrouter">REGISTRO VEHICULAR</pv-button> </router-link>
+        <router-link to="/register-car"> <pv-button id="btnrouter">REGISTRO VEHICULAR</pv-button> </router-link>
         <router-link to="/notification-owner"> <pv-button id="btnrouter">NOTIFICACIONES</pv-button> </router-link>
         <router-link to="/rent-owner"> <pv-button id="btnrouter">ALQUILER</pv-button> </router-link>
         <router-link to="/profile-owner"> <a><pv-images id="btnrouter" src="https://i.postimg.cc/FFqf7CRJ/usuario-1.png" alt="logo" width="40"/></a> </router-link>

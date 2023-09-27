@@ -16,13 +16,12 @@
     </div>
     <div class="flex-1 result-container">
       <div class=" flex flex-justify-content-center contract-container">
-        <img src="https://imgv2-1-f.scribdassets.com/img/document/393602309/original/b296abab9b/1695144581?v=1"/>
-      </div>
+      <img src="https://imgv2-1-f.scribdassets.com/img/document/393602309/original/b296abab9b/1695144581?v=1"/>
+    </div>
       <p>Declaro bajo juramento que yo <b>Piero Torres Arias</b> , acepto los requisitos mencionados anteriormente</p>
       <div class="flex flex-row signature-container">
-        <pv-button label="Generar firma digital" on-click="{{generateSignature()}}"></pv-button>
+        <pv-button label="Generar firma digital" @click="generateSignature"></pv-button>
         <p>{{this.firma}}</p>
-
       </div>
     </div>
   </div>
@@ -39,11 +38,9 @@ export default{
       firma:""
     }
   },
-  methods(){
-    return{
-    generateSignature:()=>{
+  methods:{
+    generateSignature(){
       this.firma = "Piero Torres Arias ID:343434343434 Agosto 30 del 2023/19:00"
-    }
     }
   }
 }
