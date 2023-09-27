@@ -15,7 +15,15 @@ import homeOwnerComponent from "@/components/home/home-owner-component.vue";
 import welcome from "@/components/welcome/welcome-component.vue";
 import profileOwner from "@/components/profile/profile-owner-component.vue";
 import profileTenant from "@/components/profile/profile-tenant-component.vue";
+
+import SearchCarComponent from "@/components/search-car/search-car.component.vue";
+import searchCarComponent from "@/components/search-car/search-car.component.vue";
+import rentalAgreementComponent from "@/components/search-car/rental-agreement.component.vue";
+import registerCarComponent from "@/components/register-car/register-car.component.vue";
+import generateContractComponent from "@/components/register-car/generate-contract.component.vue";
+
 import maintenanceTenantComponent from "@/components/maintenance/maintenance-tenant-component.vue";
+
 
 const routes = [
     { path: "/", component: welcome },
@@ -24,6 +32,7 @@ const routes = [
     { path: "/register-tenant", component: registerTenantComponent},
     { path: "/register-owner", component: registerOwnerComponent},
     { path: "/home-owner", component: homeOwnerComponent},
+    { path: "/rental-agreement", component: rentalAgreementComponent},
     { path: "/home-tenant", component: homeTenantComponent},
     { path: "/profile-owner", component: profileOwner},
     { path: "/profile-tenant", component: profileTenant},
@@ -33,6 +42,9 @@ const routes = [
     { path: "/online-payment", component: onlinePayment},
     { path: "/rent-requests-owner", component: rentRequestsOwner},
     { path: "/profile-request", component: profileRequest},
+    { path: "/register-car", component: registerCarComponent},
+    {path: "/search-car", component: searchCarComponent},
+    {path: "/generate-contract", component: generateContractComponent},
     { path: "/:pathMatch(.*)*", component: pageNotFound },
     { path: "/maintenance-tenant", component: maintenanceTenantComponent},
 ];

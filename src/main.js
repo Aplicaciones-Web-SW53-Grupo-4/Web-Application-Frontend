@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import 'primeflex/primeflex.css';
 import App from "./App.vue";
 import PrimeVue from "primevue/config";
 import router from "@/router";
