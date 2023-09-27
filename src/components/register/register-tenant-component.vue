@@ -14,7 +14,7 @@
   <div class="card">
     <pv-card class="p-cardcontent" style="width: 30em;height: 55em" >
       <template #header>
-        <router-link to="/register-tenat"><pv-button id="btn" :label="$t('tenant')"/></router-link>
+        <router-link to="/register-tenant"><pv-button id="btn" :label="$t('tenant')"/></router-link>
         <router-link to="/register-owner"> <pv-button id="btn" :label="$t('owner')" style="margin-left: 1em" /></router-link>
 
       </template>
@@ -79,8 +79,8 @@
       </template>
       <template #footer>
         <pv-button id="btnprimary" :label="$t('register_login_tenant')"  /><br><br>
-        <label style="font-family: Poppins,serif;color:black">{{$t("question_tell")}} </label> <router-link to="/"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b>{{$t("login")}}</b></a></router-link><br><br>
-        <label style="font-family: Poppins,serif;color:black">{{$t("Non_tenant")}}</label> <router-link to="/Register-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> {{$t("register_login_owner")}}</b></a></router-link>
+        <label style="font-family: Poppins,serif;color:black">{{$t("question_tell")}} </label> <router-link to="/login-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b>{{$t("login")}}</b></a></router-link><br><br>
+        <label style="font-family: Poppins,serif;color:black">{{$t("Non_tenant")}}</label> <router-link to="/register-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> {{$t("register_login_owner")}}</b></a></router-link>
 
 
 
@@ -96,7 +96,7 @@
 import UseApiService from "@/services/use-api-services";
 
 export default {
-  name: "Register-tenant-component",
+  name: "register-tenant-component",
   data() {
     return {
       email: "",
