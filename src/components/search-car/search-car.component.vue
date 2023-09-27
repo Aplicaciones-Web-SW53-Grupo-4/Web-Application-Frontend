@@ -6,7 +6,6 @@
         <div class="field">
           <label for="firstname1">Ubicación</label>
           <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-          <pv-button class="" type="button" label="Search" icon="pi pi-search" :loading="loading" @click="load"></pv-button>
         </div>
         <div class="field">
           <label for="lastname1">Precio</label>
@@ -29,9 +28,12 @@
         </div> <div class="field">
         <label for="firstname1">Transmision</label>
         <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        <pv-button class="btn" type="button" label="Search" icon="pi pi-search" :loading="loading" @click="search()"></pv-button>
+
       </div>
       </div>
       <div class="flex-1 result-container">
+        <template v-if="searched">
         <pv-card>
           <template #header>
             <div class ="img-container">
@@ -39,7 +41,7 @@
             </div>
           </template>
           <template #content>
-            <router-link to="/rental-agreement"><pv-button   label="Ver contrato de alquiler" /></router-link>
+            <router-link to="/rental-agreement"><pv-button class="btn"  label="Ver contrato de alquiler" /></router-link>
             <pv-button  label="Disponible" severity="secondary" style="margin-left: 0.5em" />
           </template>
           <template #footer>
@@ -96,8 +98,10 @@
       </div>
           </template>
         </pv-card>
+        </template>
 
       </div>
+
   </div>
 </template>
 <script>
@@ -111,23 +115,25 @@ export default{
     return {
       value:"",
       loading:false,
+      searched:false,
     }
   },
-  methods(){
-    return{
-      load : () => {
+  methods:{
+      load(){
         this.loading.value = true;
         setTimeout(() => {
           this.loading.value = false;
-        }, 2000);
-      },
+        }, 2000)
+    },
+    search(){
+        this.searched=true;
     }
   }
 }
 </script>
 <style scoped>
-.container{
-
+.btn{
+  background-color:#40019A;
 }
 .field{
   width: 300px;
@@ -158,5 +164,8 @@ export default{
 .img-container{
   width:30%;
   margin:auto;
+}
+*{
+  font-family:"Poppins";
 }
 </style>
