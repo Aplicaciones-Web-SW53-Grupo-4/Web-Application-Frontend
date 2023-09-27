@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$RpptiYqZ3KY0Jmufr.OehOk5HjVRQUpC9BwWBHZd2FBbJTVVUtgcO",
+      "id": 1
+    },
+    {
+      "email": "erickruiz@mail.com",
+      "password": "$2a$10$pe/BBlCMMRaWuSBOL4bXGOmWk4iRWF/69eU55Carv9eA19VdTh1jS",
+      "id": 2
+    },
+    {
+      "email": "jorgecampos@mail.com",
+      "password": "$2a$10$3Yluoa/XD.D.EYGImiHJduKBOj7zTazNRvvR.jLcj3IXI.cYXNcuy",
+      "id": 3
+    },
+    {
+      "email": "pedroruiz@mail.com",
+      "password": "$2a$10$DzZ9nQy0FSndX3gLkUIEQuJn9DhHM2koaXgLDXQvqUccOTO184XjS",
+      "id": 4
+    },
+    {
+      "email": "juanpedro@mail.com",
+      "password": "$2a$10$rde/nwaPtfTxOaTR5XSZJecd/W.sDb8Zcfh6NLKi.3BTDZ4A6jx5q",
+      "id": 5
+    },
+    {
+      "email": "mariaajarao@mail.com",
+      "password": "$2a$10$.wDqQyM4sfzguWBuD7m9.uzXQr0haENW0VbNShAlrtbjJGVAEbhse",
+      "id": 6
+    }
+  ],
+  "publication": [],
+  "messages": [
+    {
+      "id": "1",
+      "description": "Solicitud de alquiler"
+    },
+    {
+      "id": "2",
+      "description": "Solicitud de alquiler  de auto Toyota"
+    }
+  ]
+}

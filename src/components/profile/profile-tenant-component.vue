@@ -53,8 +53,8 @@ export default {
       </div>
       <div class="user-buttons">
         <button @click="editProfile">Actualizar datos</button>
-        <button @click="openImageInput">Subir documentos de antecedentes penales</button>
-        <button @click="editProfile">Cerrar sesión</button>
+        <!--<button @click="openImageInput">Subir documentos de antecedentes penales</button>-->
+        <router-link to="/login-tenant"><pv-button  id="btn" :label="$t('logout')"  /></router-link>
       </div>
     </div>
     <div class="profile-image">

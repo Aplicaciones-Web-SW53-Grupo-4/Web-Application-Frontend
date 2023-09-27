@@ -3,7 +3,7 @@
 <template >
   <div class="template-mayor">
   <div class="toolbar-1">
-    <pv-toolbar class=" toolbar-1 text-white font-bold m-0 flex flex-wrap " role="navigation" aria-label="Toolbar">
+    <pv-toolbar class=" toolbar-1 text-white font-bold m-0 flex flex-wrap " role="navigation" aria-label="Login">
       <template #start >
         <pv-images src="https://i.postimg.cc/rF47Qr56/ai-de-logo-Mesa-de-trabajo-1.png" alt="logo" width="100"/>
       </template>
@@ -14,12 +14,12 @@
   <div class="card">
     <pv-card class="p-cardcontent" style="width: 30em;height: 33em" >
       <template #header>
-        <router-link to="/login-tenant"><pv-button id="btn" label="Arrendatario"/></router-link>
-        <router-link to="/login-owner"> <pv-button id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
+        <router-link to="/login-tenant"><pv-button id="btn" :label="$t('tenant')" aria-label="Login tenant"/></router-link>
+        <router-link to="/login-owner"> <pv-button id="btn" :label="$t('owner')"  style="margin-left: 1em" /></router-link>
       </template>
       <template #title >
           <span style="color:black;font-family: Poppins,serif ">
-            Bienvenidos a Automovile Unit
+            {{ $t("welcome_login")  }}
           </span>
       </template>
 
@@ -27,7 +27,7 @@
 
         <div class="inputp flex justify-content-center">
             <span>
-              <label for="email" style="font-family: Poppins,serif ;color:black">Correo electrónico </label>
+              <label for="email" style="font-family: Poppins,serif ;color:black">{{ $t("email")  }}</label>
               <pv-inputtext id="email" v-model="email" aria-describedby="username-help" class="inputp" type="text" required/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ">Enter your email.</small>
             </span>
@@ -39,7 +39,7 @@
 
         <div class="inputp flex justify-content-center">
               <span >
-                <label for="password" style="font-family: Poppins,serif;color:black">Contraseña </label>
+                <label for="password" style="font-family: Poppins,serif;color:black">{{ $t("password")  }}</label>
                 <pv-inputtext id="password" v-model="password"  aria-describedby="username-help" class="inputp" type="password" required  />
                 <small id="password-help" style="color:black;font-family: Poppins,serif ">Enter your password.</small>
 
@@ -48,8 +48,9 @@
 
       </template>
       <template #footer>
-        <router-link to="/home-owner"> <pv-button  id="btnprimary" label="ACCEDER COMO PROPIETARIO"  /></router-link> <br><br>
-        <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inscríbete</b></a></router-link>
+
+        <pv-button id="btnprimary" @click="login" :label="$t('access_login_owner')"></pv-button> <br><br>
+        <label style="font-family: Poppins,serif;color:black">No tienes una cuenta </label><router-link to="/Register-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> {{ $t("sign_up")}}</b></a></router-link>
 
 
 
@@ -65,7 +66,7 @@
 
 <script>
 
-import UseApiService from "@/services/use-api-services";
+import {SecurityApiService} from "@/services/security-api.service";
 
 export default {
   name: "login-Owner-component",
@@ -73,9 +74,22 @@ export default {
     return {
       email: "",
       password: "",
-      useApiService: new UseApiService(),
+      security:new SecurityApiService(),
     };
   },
+  methods: {
+    login() {
+      //TODO
+
+      this.security.login(this.email, this.password).then((response) => {
+        if (response.data.accessToken) {
+          this.$router.push("/home-owner");
+        } else {
+          alert('invalid user');
+        }
+      })
+    }
+  }
 };
 </script>
 
