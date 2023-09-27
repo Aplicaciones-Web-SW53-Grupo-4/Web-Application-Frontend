@@ -18,8 +18,8 @@
   <div class="card">
     <pv-card class="p-cardcontent" style="width: 30em;height: 55em" >
       <template #header>
-        <router-link to="/register-tenant"><pv-button id="btn" label="Arrendatario"/></router-link>
-        <router-link to="/register-owner"> <pv-button id="btn" label="Propietario"  style="margin-left: 1em" /></router-link>
+        <router-link to="/register-tenant"><pv-button id="btn" :label="$t('tenant')"/></router-link>
+        <router-link to="/register-owner"> <pv-button id="btn" :label="$t('owner')"  style="margin-left: 1em" /></router-link>
 
       </template>
       <template #title >
@@ -32,7 +32,7 @@
 
         <div class="inputp flex justify-content-center">
             <span>
-              <label for="email" style="font-family: Poppins,serif ;color:black">Correo electrónico  </label>
+              <label for="email" style="font-family: Poppins,serif ;color:black">{{$t("email")}} </label>
               <pv-inputtext id="labels" v-model="email" aria-describedby="Ingrese su correo" class="inputp" type="text"/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ;font-size: 10px">Enter your email.</small>
             </span>
@@ -41,7 +41,7 @@
         </div>
         <div class="inputp flex justify-content-center">
               <span >
-                <label for="password" style="font-family: Poppins,serif;color:black">Contraseña</label>
+                <label for="password" style="font-family: Poppins,serif;color:black">{{$t("password")}}</label>
                 <pv-inputtext id="labels" v-model="password" aria-describedby="Ingrese su contraseña" class="inputp" type="password" />
                 <small id="password-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your password.</small>
 
@@ -49,7 +49,7 @@
         </div>
         <div class="inputp flex justify-content-center">
               <span >
-                <label for="name" style="font-family: Poppins,serif;color:black">Nombre</label>
+                <label for="name" style="font-family: Poppins,serif;color:black">{{$t("names")}}</label>
                 <pv-inputtext id="labels" v-model="name"  aria-describedby="Ingrese su nombre" class="inputp" type="text" />
                 <small id="name-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your name.</small>
 
@@ -57,7 +57,7 @@
         </div>
         <div class="inputp flex justify-content-center">
               <span >
-                <label for="lastname" style="font-family: Poppins,serif;color:black">Apellido</label>
+                <label for="lastname" style="font-family: Poppins,serif;color:black">{{$t("lastname")}}</label>
                 <pv-inputtext id="labels" v-model="lastname"  aria-describedby="Ingrese su apellido" class="inputp" type="text" />
                 <small id="lastname-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your lastname.</small>
 
@@ -65,7 +65,7 @@
         </div>
         <div class="inputp flex justify-content-center">
               <span >
-                <label for="phone" style="font-family: Poppins,serif;color:black">Teléfono</label>
+                <label for="phone" style="font-family: Poppins,serif;color:black">{{$t("phone")}}</label>
                 <pv-inputtext id="labels" v-model="phone"  aria-describedby="Ingrese su telefono" class="inputp" type="number" />
                 <small id="phone-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your phone.</small>
 
@@ -73,7 +73,7 @@
         </div>
         <div class="inputp flex justify-content-center">
               <span >
-                <label for="country" style="font-family: Poppins,serif;color:black">Country</label>
+                <label for="country" style="font-family: Poppins,serif;color:black">{{$t("country")}}</label>
                 <pv-inputtext id="labels" v-model="country"  aria-describedby="Ingrese su país" class="inputp" type="text" />
                 <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your country.</small>
 
@@ -82,9 +82,9 @@
 
       </template>
       <template #footer>
-        <pv-button id="btnprimary" label="REGÍSTRATE COMO PROPIETARIO"  /><br><br>
-        <label style="font-family: Poppins,serif;color:black">¿Ya tienes una cuenta? </label> <router-link to="/login-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Inicia sesión</b></a></router-link><br><br>
-        <label style="font-family: Poppins,serif;color:black">No eres Propietario </label> <router-link to="/register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> Regístrate como Arrendatario</b></a></router-link>
+        <pv-button id="btnprimary" :label="$t('register_login_owner')"  /><br><br>
+        <label style="font-family: Poppins,serif;color:black">{{$t("question_tell")}} </label> <router-link to="/login-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> {{$t("login")}}</b></a></router-link><br><br>
+        <label style="font-family: Poppins,serif;color:black">{{$t("Non_owner")}} </label> <router-link to="/register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b>{{$t("register_login_tenant")}}</b></a></router-link>
 
 
 

@@ -53,9 +53,11 @@ export default {
       </div>
       <div class="user-buttons">
         <button @click="editProfile">Actualizar datos</button>
-        <button @click="editProfile">Cerrar sesión</button>
+        <!--<button @click="editProfile">Cerrar sesión</button>-->
+        <router-link to="/login-owner"><pv-button  id="btn" :label="$t('logout')"  /></router-link>
       </div>
     </div>
+
     <div class="profile-image">
       <input type="file" accept="image/*" @change="handleImageChange" style="display: none" ref="imageInput" />
       <img :src="user.imageUrl" alt="Perfil del usuario" @click="openImageInput" /><br>
