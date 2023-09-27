@@ -16,6 +16,7 @@ import welcome from "@/components/welcome/welcome-component.vue";
 import profileOwner from "@/components/profile/profile-owner-component.vue";
 import profileTenant from "@/components/profile/profile-tenant-component.vue";
 import maintenanceTenantComponent from "@/components/maintenance/maintenance-tenant-component.vue";
+import requestTenantComponent from "@/components/request/request-tenant-component.vue";
 
 const routes = [
     { path: "/", component: welcome },
@@ -33,8 +34,10 @@ const routes = [
     { path: "/online-payment", component: onlinePayment},
     { path: "/rent-requests-owner", component: rentRequestsOwner},
     { path: "/profile-request", component: profileRequest},
-    { path: "/:pathMatch(.*)*", component: pageNotFound },
     { path: "/maintenance-tenant", component: maintenanceTenantComponent},
+    {path: "/request-tenant", component: requestTenantComponent  },
+    {path: "/:pathMatch(.*)*", component: pageNotFound },
+
 ];
 
 const router = createRouter({
