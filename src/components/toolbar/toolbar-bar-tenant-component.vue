@@ -16,7 +16,7 @@ export default {
       <template #end>
         <div class="control">
           <router-link to="/home-tenant"> <pv-button  id="btnrouter">INICIO</pv-button> </router-link>
-          <router-link to="/share-tenant"> <pv-button id="btnrouter">BUSCAR AUTOS</pv-button> </router-link>
+          <router-link to="/search-car"> <pv-button id="btnrouter">BUSCAR AUTOS</pv-button> </router-link>
           <router-link to="/maintenance-tenant"> <pv-button id="btnrouter">MANTENIMIENTO</pv-button> </router-link>
           <router-link to="/rent-tenant"> <pv-button id="btnrouter">ALQUILER</pv-button> </router-link>
           <router-link to="/requests-tenant"> <pv-button id="btnrouter">SOLICITUDES</pv-button> </router-link>
