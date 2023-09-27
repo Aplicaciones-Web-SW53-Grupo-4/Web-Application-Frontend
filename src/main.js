@@ -14,7 +14,8 @@ import Password from 'primevue/password';
 import Toolbar from 'primevue/toolbar';
 import Divider from 'primevue/divider';
 import Message from 'primevue/message';
-
+import Textarea from "primevue/textarea";
+import FileUpload from "primevue/fileupload";
 
 const app =createApp(App);
 app.use(i18n);
@@ -28,5 +29,7 @@ app.component("pv-inputtext",InputText);
 app.component("pv-inputpassword",Password);
 app.component("pv-divider",Divider);
 app.component("pv-message",Message);
+app.component("pv-textarea",Textarea);
+app.component("pv-fileupload",FileUpload);
 
 app.mount("#app");
