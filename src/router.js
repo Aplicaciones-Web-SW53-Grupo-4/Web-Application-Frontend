@@ -19,6 +19,10 @@ import maintenanceTenantComponent from "@/components/maintenance/maintenance-ten
 import rentRequestsTenantComponent from "@/components/rent/rent-owner/rent-requests-owner-component.vue";
 import notificationOwner from "@/components/notifications/notification-owner.vue";
 import selectionPaymentCompoment from "@/components/rent/rent-tenant/selection-payment-compoment.vue";
+import registerCarComponent from "@/components/register-car/register-car.component.vue";
+import searchCarComponent from "@/components/search-car/search-car.component.vue";
+import generateContractComponent from "@/components/register-car/generate-contract.component.vue";
+import RequestTenantComponent from "@/components/request/request-tenant-component.vue";
 
 const routes = [
     { path: "/", component: welcome },
@@ -42,10 +46,9 @@ const routes = [
     {path: "/generate-contract", component: generateContractComponent},
     {path: "/notifications-owner", component: notificationOwner},
     {path: "/selection-payment", component: selectionPaymentCompoment},
-
-
-    { path: "/:pathMatch(.*)*", component: pageNotFound },
+    {path: "/request-tenant", component: RequestTenantComponent},
     { path: "/maintenance-tenant", component: maintenanceTenantComponent},
+    { path: "/:pathMatch(.*)*", component: pageNotFound },
 ];
 
 const router = createRouter({
