@@ -15,7 +15,7 @@ import FooterComponent from "@/components/footer/footer-component.vue";
           <label for="location" class="location-label">Ubicación:</label>
           <input type="text" id="location" class="location-field" placeholder="Ingrese su ubicación">
         </div>
-        <div><router-link to=""><pv-button class="combobox" id="btn" label="COMPARTE TU AUTO" /></router-link></div>
+        <div><router-link to="/register-car"><pv-button class="combobox" id="btn" label="COMPARTE TU AUTO" /></router-link></div>
       </div>
     </div>
     <p class="texto3">Notificaciones</p>
@@ -23,7 +23,7 @@ import FooterComponent from "@/components/footer/footer-component.vue";
       <div class="notification">
         <div class="notification-message">Piero Torres Arias envio una solicitud de alquiler del vehículo Toyota Prius</div>
         <div class="notification-button">
-          <pv-button class="notification-button" label="Ver mensaje" />
+          <router-link to="/profile-request"><pv-button class="notification-button" label="Ver mensaje" /> </router-link>
         </div>
       </div>
       <div class="notification">

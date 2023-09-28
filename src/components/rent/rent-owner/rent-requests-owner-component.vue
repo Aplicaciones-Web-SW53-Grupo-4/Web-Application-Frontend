@@ -6,7 +6,7 @@
       <label >ALQUILER</label>
     </div>
     <div style="text-align: end ">
-      <label style="font-family: 'Poppins',sans-serif;">Encuentra todas las solisitudes disponibles </label><br>
+      <label style="font-family: 'Poppins',sans-serif;">Encuentra todas las solicitudes disponibles </label><br>
     </div>
         <pv-message :closable="false" icon="pi pi-send" style="color: #14131B;font-family: 'Poppins',sans-serif;background-color: whitesmoke" >Piero Torres Arias envio una solicitud de alquiler del
           vehículo Toyota Prius &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

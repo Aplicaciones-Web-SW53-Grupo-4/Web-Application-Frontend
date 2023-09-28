@@ -15,7 +15,7 @@
     <div class="card">
       <pv-card class="p-cardcontent" >
         <template #content>
-          <router-link to="/.."><pv-button  id="btnprimary" label="AGREGAR AUTO"  /></router-link>
+          <router-link to="/register-car"><pv-button  id="btnprimary" label="AGREGAR AUTO"  /></router-link>
         </template>
       </pv-card>
     </div>

@@ -17,8 +17,8 @@ export default {
 
         <router-link to="/home-owner"> <pv-button  id="btnrouter">{{$t("start")}}</pv-button> </router-link>
         <router-link to="/register-car"> <pv-button id="btnrouter">{{$t("vehicule_registration")}}</pv-button> </router-link>
-        <router-link to="/notification-owner"> <pv-button id="btnrouter">{{$t("notifications")}}</pv-button> </router-link>
-        <router-link to="/rent-owner"> <pv-button id="btnrouter">{{$t("rent")}}</pv-button> </router-link>
+        <router-link to="/notifications-owner"> <pv-button id="btnrouter">{{$t("notifications")}}</pv-button> </router-link>
+        <router-link to="/rent-owner-major"> <pv-button id="btnrouter">{{$t("rent")}}</pv-button> </router-link>
 
         <router-link to="/profile-owner"> <a><pv-images id="btnrouter" src="https://i.postimg.cc/FFqf7CRJ/usuario-1.png" alt="logo" width="40"/></a> </router-link>
       </div>
