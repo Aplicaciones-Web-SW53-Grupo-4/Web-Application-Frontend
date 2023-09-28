@@ -110,13 +110,13 @@ export default {
   flex: 1;
   margin: 10px;
   background-color: white;
-  border: 1px solid #ddd; /* Agregado para agregar un borde a las cards */
-  border-radius: 10px; /* Agregado para bordes redondeados */
-  padding: 20px; /* Agregado para espacio interno */
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Agregado para sombra */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: column; /* Alinea el contenido verticalmente */
-  align-items: center; /* Centra el contenido horizontalmente */
+  flex-direction: column;
+  align-items: center;
 }
 
 
@@ -128,7 +128,7 @@ footer-component {
 
   .card-maintenance,
   .card-evidence {
-    width: 100%; /* Ocupa todo el ancho en pantallas más pequeñas */
+    width: 100%;
   }
 }
 

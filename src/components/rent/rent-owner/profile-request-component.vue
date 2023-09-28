@@ -8,7 +8,7 @@
       <label >ALQUILER</label>
     </div>
     <div style="text-align: start">
-      <label style="font-family: 'Poppins',sans-serif;"> Nombre del solicitante: /////</label><br>
+      <label style="font-family: 'Poppins',sans-serif;"> Nombre del solicitante: Erick Ruiz</label><br>
     </div>
   </div>
 
@@ -19,10 +19,10 @@
 
         <div class="grid">
           <div class="col1">
-            <label  class="textinfo">Nombres:   </label><br><br>
-            <label  class="textinfo">Apellidos: </label><br><br>
-            <label  class="textinfo">Celular: </label><br><br>
-            <label  class="textinfo">Teléfono: </label><br>
+            <label  class="textinfo">Nombres: Erick   </label><br><br>
+            <label  class="textinfo">Apellidos:Ruiz </label><br><br>
+            <label  class="textinfo">Celular: 990883151</label><br><br>
+            <label  class="textinfo">Teléfono: 01-0883151</label><br>
           </div>
           <div class="col2">
             <center><img src="https://i.postimg.cc/FFqf7CRJ/usuario-1.png" alt="logo" class="img"/></center>
@@ -30,7 +30,7 @@
         </div>
         <div class="grid2">
           <div class="col3">
-            <label style="font-family: 'Poppins',sans-serif;color: #40019A">Solicito Alquilar /// </label><br>
+            <label style="font-family: 'Poppins',sans-serif;color: #40019A">Solicito Alquilar: Toyota </label><br>
 
           </div>
           <div class="col4">
