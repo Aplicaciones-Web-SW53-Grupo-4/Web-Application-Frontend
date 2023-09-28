@@ -1,9 +1,10 @@
 <script>
 import ToolbarBarOwner from "@/components/toolbar/toolbar-bar-owner-component.vue";
 import FooterComponent from "@/components/footer/footer-component.vue";
+import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
 
 export default {
-  components: { FooterComponent, ToolbarBarOwner },
+  components: {ToolbarBarTenant, FooterComponent, ToolbarBarOwner },
   data() {
     return {
       user: {
@@ -38,7 +39,7 @@ export default {
 </script>
 
 <template>
-  <toolbar-bar-owner></toolbar-bar-owner>
+  <toolbar-bar-tenant></toolbar-bar-tenant>
   <div class="user-profile">
     <div class="user-details">
       <h1>Perfil de Usuario</h1>

@@ -11,7 +11,7 @@
     <div class="card">
       <pv-card class="p-cardcontent" >
         <template #content>
-          <router-link to="/online-payment"><pv-button  id="btnprimary" label="ALQUILAR NUEVO AUTO"  /></router-link>
+          <router-link to="/selection-payment"><pv-button  id="btnprimary" label="ALQUILAR NUEVO AUTO"  /></router-link>
         </template>
       </pv-card>
     </div>
