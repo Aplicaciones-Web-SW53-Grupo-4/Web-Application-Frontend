@@ -84,7 +84,7 @@ export default {
     };
   },
   mounted() {
-    // Cambia los estilos del botón de selección del componente pv-fileupload
+
     const fileUploadElement = this.$refs.fileUpload.$el;
     const chooseButton = fileUploadElement.querySelector(".p-button");
     if (chooseButton) {
@@ -99,17 +99,17 @@ export default {
 <style scoped>
 .container-cards-maintenance {
   display: flex;
-  min-height: calc(100vh - 50px); /* Resta la altura del footer */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan cuando el ancho de la pantalla disminuye */
+  min-height: calc(100vh - 50px);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .card-maintenance,
 .card-evidence {
   flex: 1;
   margin: 10px;
-  background-color: white; /* Agregado para separar visualmente las cards */
+  background-color: white;
   border: 1px solid #ddd; /* Agregado para agregar un borde a las cards */
   border-radius: 10px; /* Agregado para bordes redondeados */
   padding: 20px; /* Agregado para espacio interno */

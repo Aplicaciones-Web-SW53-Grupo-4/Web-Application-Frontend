@@ -14,9 +14,8 @@ export default {
       </template>
       <template #end>
         <div class="control">
-
           <router-link to="/home-tenant"> <pv-button  id="btnrouter">{{$t("start")}}</pv-button> </router-link>
-          <router-link to="/search-car"> <pv-button id="btnrouter">{{$t("search_cars")}}</pv-button> </router-link>
+          <router-link to="/share-tenant"> <pv-button id="btnrouter">{{$t("search_cars")}}</pv-button> </router-link>
           <router-link to="/maintenance-tenant"> <pv-button id="btnrouter">{{$t("maintenance")}}</pv-button> </router-link>
           <router-link to="/rent-tenant-major"> <pv-button id="btnrouter">{{$t("rent")}}</pv-button> </router-link>
           <router-link to="/rent-request-tenant"> <pv-button id="btnrouter">{{$t("applications")}}</pv-button> </router-link>
