@@ -66,7 +66,7 @@
 
 <script>
 
-import {SecurityApiService} from "@/services/security-api.service";
+import {UserValidationRegisterService} from "@/services/user-validation-register.service";
 
 export default {
   name: "login-Owner-component",
@@ -74,7 +74,7 @@ export default {
     return {
       username: "",
       password: "",
-      security:new SecurityApiService(),
+      security:new UserValidationRegisterService(),
     };
   },
   methods: {

@@ -24,18 +24,18 @@
           <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
       </div>
-      <h3>Dimensiones</h3>
+      <h3>Propiedades</h3>
+
 
       <div class ="flex xl:flex-row lg:flex-row md:flex-column sm:flex-column flex-column container-camp">
+
         <div class="field">
-          <label for="firstname1">Largo/alto/ancho</label>
-          <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-        </div>
-        <div class="field">
-          <label for="lastname1">Peso</label>
-          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          <label for="lastname1">Cantidad de asientos</label>
+          <input id="lastname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
       </div>
+
+
       <h3>Adicionales</h3>
       <div class ="flex xl:flex-row lg:flex-row md:flex-column sm:flex-column flex-column container-camp">
         <div class="field">

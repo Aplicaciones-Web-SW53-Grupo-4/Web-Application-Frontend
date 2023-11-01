@@ -68,17 +68,40 @@
               </span>
         </div>
         <div class="inputp flex justify-content-center">
-              <span >
-                <label for="country" style="font-family: Poppins,serif;color:black">{{$t("country")}}</label>
-                <pv-inputtext id="labels" v-model="country"  aria-describedby="Ingrese su país" class="inputp" type="text" />
-                <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your country.</small>
+                <span >
+                  <label for="" style="font-family: Poppins,serif;color:black">Departamento</label>
+                  <pv-inputtext id="labels" v-model="address.department"  aria-describedby="Ingrese su país" class="inputp" type="text" />
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your department.</small>
 
-              </span>
+                </span>
+        </div>
+        <div class="inputp flex justify-content-center">
+                <span >
+                  <label for="" style="font-family: Poppins,serif;color:black">Distrito</label>
+                  <pv-inputtext id="labels" v-model="address.district"  aria-describedby="Ingrese su distrito" class="inputp" type="text" />
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your district.</small>
+
+                </span>
+        </div>
+        <div class="inputp flex justify-content-center">
+                <span >
+                  <label for="" style="font-family: Poppins,serif;color:black">Provincia</label>
+                  <pv-inputtext id="labels" v-model="address.province"  aria-describedby="Ingrese su provincia" class="inputp" type="text" />
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your province.</small>
+                </span>
+        </div>
+        <div class="inputp flex justify-content-center">
+                <span >
+                  <label for="" style="font-family: Poppins,serif;color:black">Dirección</label>
+                  <pv-inputtext id="labels" v-model="address.street"  aria-describedby="Ingrese su dirección" class="inputp" type="text" />
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your street.</small>
+
+                </span>
         </div>
 
       </template>
       <template #footer>
-        <pv-button id="btnprimary" :label="$t('register_login_tenant')"  /><br><br>
+        <pv-button id="btnprimary"  @click="register" :label="$t('register_login_tenant')"  /><br><br>
         <label style="font-family: Poppins,serif;color:black">{{$t("question_tell")}} </label> <router-link to="/login-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b>{{$t("login")}}</b></a></router-link><br><br>
         <label style="font-family: Poppins,serif;color:black">{{$t("Non_tenant")}}</label> <router-link to="/register-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> {{$t("register_login_owner")}}</b></a></router-link>
 
@@ -94,20 +117,45 @@
 
 <script>
 import UseApiService from "@/services/use-api-services";
+import {UserValidationRegisterService} from "@/services/user-validation-register.service";
 
 export default {
   name: "register-tenant-component",
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       name:"",
       lastname:"",
-      phone:"",
-      country:"",
+      phone: "",
+      address: {
+        department: "",
+        province: "",
+        district: "",
+        street: "",
+      },
+      country: "",
+      userType:0,
       useApiService: new UseApiService(),
+      security: new UserValidationRegisterService(),
+
     };
   },
+  methods: {
+    register() {
+      //TOD
+      this.security.register(this.username, this.password,
+          this.userType, this.name, this.lastname, this.address,this.phone).then((response) => {
+        if (response.data) {
+          this.$router.push("/home-tenant");
+        } else {
+          alert('invalid user');
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+  }
 };
 
 </script>

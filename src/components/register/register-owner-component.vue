@@ -76,7 +76,7 @@
                 <span >
                   <label for="" style="font-family: Poppins,serif;color:black">Departamento</label>
                   <pv-inputtext id="labels" v-model="address.department"  aria-describedby="Ingrese su país" class="inputp" type="text" />
-                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your country.</small>
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your department.</small>
 
                 </span>
           </div>
@@ -84,7 +84,7 @@
                 <span >
                   <label for="" style="font-family: Poppins,serif;color:black">Distrito</label>
                   <pv-inputtext id="labels" v-model="address.district"  aria-describedby="Ingrese su distrito" class="inputp" type="text" />
-                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your country.</small>
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your district.</small>
 
                 </span>
           </div>
@@ -92,14 +92,14 @@
                 <span >
                   <label for="" style="font-family: Poppins,serif;color:black">Provincia</label>
                   <pv-inputtext id="labels" v-model="address.province"  aria-describedby="Ingrese su provincia" class="inputp" type="text" />
-                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your country.</small>
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your province.</small>
                 </span>
           </div>
         <div class="inputp flex justify-content-center">
                 <span >
                   <label for="" style="font-family: Poppins,serif;color:black">Dirección</label>
                   <pv-inputtext id="labels" v-model="address.street"  aria-describedby="Ingrese su dirección" class="inputp" type="text" />
-                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your country.</small>
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your street.</small>
 
                 </span>
           </div>
@@ -120,7 +120,7 @@
 
 <script>
 import UseApiService from "@/services/use-api-services";
-import { SecurityApiService } from "../../services/security-api.service";
+import {UserValidationRegisterService} from "@/services/user-validation-register.service";
 export default {
  
   name: "register-owner-component",
@@ -140,7 +140,7 @@ export default {
       country: "",
       userType:1,
       useApiService: new UseApiService(),
-      security: new SecurityApiService(),
+      security: new UserValidationRegisterService(),
 
     };
   },
