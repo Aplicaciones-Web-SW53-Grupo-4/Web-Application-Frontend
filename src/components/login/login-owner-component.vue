@@ -28,7 +28,7 @@
         <div class="inputp flex justify-content-center">
             <span>
               <label for="email" style="font-family: Poppins,serif ;color:black">{{ $t("email")  }}</label>
-              <pv-inputtext id="email" v-model="email" aria-describedby="username-help" class="inputp" type="text" required/>
+              <pv-inputtext id="email" v-model="username" aria-describedby="username-help" class="inputp" type="text" required/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ">Enter your email.</small>
             </span>
 
@@ -72,7 +72,7 @@ export default {
   name: "login-Owner-component",
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       security:new SecurityApiService(),
     };
@@ -80,14 +80,13 @@ export default {
   methods: {
     login() {
       //TODO
-
-      this.security.login(this.email, this.password).then((response) => {
-        if (response.data.accessToken) {
-          this.$router.push("/home-owner");
-        } else {
-          alert('invalid user');
-        }
-      })
+      this.security.login(this.username, this.password).then((response) => {
+        //TODO buscar manera de pasar el id a otros componentes
+        this.$emit('userLoggedIn', response.id);
+        this.$router.push("/home-owner");
+      }).catch((error) => {
+        alert('invalid user');
+      });
     }
   }
 };

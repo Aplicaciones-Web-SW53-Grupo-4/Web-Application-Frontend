@@ -1,9 +1,13 @@
 import axios from "axios";
-
+import { basePath } from "./basePath";
 export class SecurityApiService {
-    login(email,password){
-        const body={email,password};
+    login(username,password){
+        const body = { username, password };
+        return axios.post(`${basePath}/api/User/login`,body);
+    }
+    register(username, password, userType, name, lastname, adress, phone) { 
+        const body = { username, password, userType, name, lastname, adress, phone };
 
-        return axios.post("http://localhost:3000/login",body);
+        return axios.post(`${basePath}/api/User/register`, body);
     }
 }

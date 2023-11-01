@@ -18,6 +18,7 @@ import Message from 'primevue/message';
 import Textarea from "primevue/textarea";
 import FileUpload from "primevue/fileupload";
 
+
 const app =createApp(App);
 app.use(i18n);
 app.use(PrimeVue);
@@ -34,3 +35,4 @@ app.component("pv-textarea",Textarea);
 app.component("pv-fileupload",FileUpload);
 
 app.mount("#app");
+

@@ -1,7 +1,7 @@
 import axios from "axios";
-
+import { basePath } from "./basePath";
 const http = axios.create({
-    baseURL: "",
+    baseURL: basePath+"/api",
 });
 
 class UseApiService {
@@ -20,6 +20,9 @@ class UseApiService {
     }
     delete(id) {
         return http.delete("users/" + id);
+    }
+    getProfileByUserId(id) {
+        return http.get(`/Profile/${id}`)
     }
 }
 
