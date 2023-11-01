@@ -29,7 +29,7 @@
         <div class="inputp flex justify-content-center">
             <span>
               <label for="email" style="font-family: Poppins,serif ;color:black">{{$t("email")}} </label>
-              <pv-inputtext id="labels" v-model="email" aria-describedby="Ingrese su correo" class="inputp" type="text"/>
+              <pv-inputtext id="labels" v-model="username" aria-describedby="Ingrese su correo" class="inputp" type="text"/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ;font-size: 10px">Enter your email.</small>
             </span>
 

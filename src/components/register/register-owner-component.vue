@@ -140,6 +140,7 @@ export default {
       country: "",
       userType:1,
       useApiService: new UseApiService(),
+
       security: new UserValidationRegisterService(),
 
     };

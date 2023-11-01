@@ -13,13 +13,9 @@
 <!--          <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">-->
         </div>
         <div class="field">
-          <label for="firstname1">Price</label> <br>
-          <div class="card flex justify-content-center">
 
-            <pv-dropdown v-model="selectedprice" :options="price" showClear optionLabel="name" placeholder="Select a Price" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-          </div>
-<!--          <label for="lastname1">Precio</label>-->
-<!--          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">-->
+          <label for="lastname1">Price</label>
+          <input v-model="price" id="lastname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
         <div class="field">
           <label for="firstname1">Time the rent</label> <br>
@@ -52,31 +48,56 @@
           </div>
 <!--          <label for="lastname1">Marca</label>-->
 <!--          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">-->
-        </div> <div class="field">
+        </div>
+        <div class="field">
         <label for="firstname1">Modelo</label>
-        <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        <input v-model="model" id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
       </div>
 
         <div class="field">
-          <label for="firstname1">Class</label> <br>
-          <div class="card flex justify-content-center">
-            <pv-dropdown v-model="selectedclase" :options="class_vehicules" showClear optionLabel="name" placeholder="Select a Class of Vehicule" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-          </div>
-<!--          <label for="lastname1">Clase</label>
-          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-   -->     </div>
+          <label for="firstname1">Cant.Asientos</label>
+          <input v-model="quantity" id="firstname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
 
         <div class="field">
-          <label for="firstname1">Transmision</label> <br>
-          <div class="card flex justify-content-center">
-            <pv-dropdown v-model="selectedtransmision" :options="transmision" showClear optionLabel="name" placeholder="Select a Transmision of Vehicule" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
-          </div>
-<!--        <label for="firstname1">Transmision</label>-->
-<!--        <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">-->
-        <pv-button class="btn" type="button" label="Search" icon="pi pi-search" :loading="loading" @click="search()"></pv-button>
+
+    <label for="lastname1">Class Vehicule</label>
+    <input v-model="classvehicules" id="lastname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+
+        <div class="field">
+
+     <label for="firstname1">Transmision</label>
+     <input v-model="transmision" id="firstname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+     <pv-button class="btn" type="button" label="Search" icon="pi pi-search" :loading="loading" @click="search()"></pv-button>
 
       </div>
       </div>
+
+
+    <div class="flex-1 result-container max-h-30rem" v-if="!searched">
+      <div class="card_carousel">
+        <pv-carousel :value="products" :numVisible="1" :numScroll="1" :responsiveOptions="responsiveOptions">
+          <template #item="slotProps">
+            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+              <div class="mb-3">
+              </div>
+              <div>
+                <h4 class="mb-1">{{ slotProps.data.brand }}</h4>
+                <h6 class="mt-0 mb-3">{{ slotProps.data.price }}</h6>
+
+                <div class="mt-5 flex align-items-center justify-content-center gap-2">
+                  <Button icon="pi pi-search" rounded />
+                  <Button icon="pi pi-star-fill" rounded severity="secondary" />
+                </div>
+              </div>
+            </div>
+          </template>
+        </pv-carousel >
+      </div>
+
+    </div>
+
 
 
 
@@ -153,14 +174,18 @@
 </template>
 <script>
 import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
+import {AutomovileService} from "@/services/automovile.service";
 
 
 export default{
   name: "search-car.component",
-  components: { ToolbarBarTenant},
+  components: {ToolbarBarTenant},
   data(){
     return {
       value:"",
+      quantity:"",
+
+      model:"",
       loading:false,
       searched:false,
       selectedCity: null,
@@ -192,18 +217,7 @@ export default{
         { name: 'Loreto' },
         { name: 'Madre de Dios' },
       ],
-      price:[
-        {name:'100'},
-        {name:'200'},
-        {name:'300'},
-        {name:'400'},
-        {name:'500'},
-        {name:'600'},
-        {name:'700'},
-        {name:'800'},
-        {name:'900'},
-        {name:'1000'},
-      ],
+      price:0,
       selectedbrand: null,
       brand: [
         { name: 'Toyota', code: 'TO' },
@@ -214,32 +228,69 @@ export default{
         { name: 'Tesla', code: 'TE' },
 
       ],
-      selectedclase: null,
-      class_vehicules:[
-        {name:'Economica'},
-        {name:'Promedio'},
-        {name:'Lujo'},
-      ],
-      selectedtransmision: null,
-      transmision:[
-        {name:'Automatic'},
-        {name:'Manual'},
 
+      classvehicules:0,
+
+      transmision:0,
+      products: null,
+      responsiveOptions: [
+        {
+          breakpoint: '1400px',
+          numVisible: 2,
+          numScroll: 1
+        },
+        {
+          breakpoint: '1199px',
+          numVisible: 3,
+          numScroll: 1
+        },
+        {
+          breakpoint: '767px',
+          numVisible: 2,
+          numScroll: 1
+        },
+        {
+          breakpoint: '575px',
+          numVisible: 1,
+          numScroll: 1
+        }
       ]
 
-    }
+    };
 
   },
+  mounted() {
+    new AutomovileService().getProductsSmall().then((response) => {
+      (this.products = response.data)
+      console.log("Products: ",this.products);
+    });
+  },
   methods:{
-      load(){
-        this.loading.value = true;
-        setTimeout(() => {
-          this.loading.value = false;
-        }, 2000)
+    load(){
+      this.loading.value = true;
+      setTimeout(() => {
+        this.loading.value = false;
+      }, 2000)
     },
     search(){
-        this.searched=true;
-    }
+      this.searched=true;
+    },
+    getSeverity(status) {
+      switch (status) {
+        case 'INSTOCK':
+          return 'success';
+
+        case 'LOWSTOCK':
+          return 'warning';
+
+        case 'OUTOFSTOCK':
+          return 'danger';
+
+        default:
+          return null;
+      }
+    },
+
   }
 }
 </script>
@@ -258,6 +309,10 @@ export default{
 }
 .card{
   width: 100%
+}
+.card_carousel{
+  width: 100%;
+
 }
 .text1{
   font-weight: bold;

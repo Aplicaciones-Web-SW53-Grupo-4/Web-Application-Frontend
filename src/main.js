@@ -19,6 +19,7 @@ import Textarea from "primevue/textarea";
 import FileUpload from "primevue/fileupload";
 import MultiSelect from 'primevue/multiselect';
 import Dropdown from 'primevue/dropdown';
+import Carousel from 'primevue/carousel';
 
 
 const app =createApp(App);
@@ -37,6 +38,7 @@ app.component("pv-textarea",Textarea);
 app.component("pv-fileupload",FileUpload);
 app.component("pv-multiselect",MultiSelect);
 app.component("pv-dropdown",Dropdown);
+app.component("pv-carousel",Carousel);
 
 app.mount("#app");
 
