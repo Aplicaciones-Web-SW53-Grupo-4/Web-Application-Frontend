@@ -9,12 +9,12 @@ export default {
   data() {
     return {
       user: {
-        rol: 'Propietario',
-        name: 'John Doe',
-        vhal: '1',
-        lastname: 'Quispe Mamani',
-        email: 'johndoe@example.com',
-        phone: '+12 34567890',
+        rol: '',
+        name: '',
+        vhal: '',
+        lastname: '',
+        email: '',
+        phone: '',
         imageUrl: 'https://via.placeholder.com/150',
       },
     };

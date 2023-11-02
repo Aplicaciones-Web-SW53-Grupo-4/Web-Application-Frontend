@@ -72,13 +72,13 @@
       </div>
       </div>
 
-    <div class="flex-1 result-container max-h-30rem" v-if="!searched">
+    <div class="flex-1 result-container max-h-30rem " v-if="!searched">
       <div class="card_carousel">
-        <pv-carousel :value="products" :numVisible="1" :numScroll="1" :responsiveOptions="responsiveOptions">
+        <pv-carousel :value="products" :numVisible="1" :numScroll="1" :responsiveOptions="responsiveOptions" >
           <template #item="slotProps">
-            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-              <div class="mb-3">
-                <img :src="slotProps.data.image" :alt="slotProps.data.brand" class="w-100" />
+            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 ">
+              <div class="mb-3 w-11 h-7rem flex">
+                <img :src="slotProps.data.image" :alt="slotProps.data.brand" class="h-full w-full" />
               </div>
               <div>
                 <h4 class="mb-1">{{ slotProps.data.brand }}</h4>
@@ -102,7 +102,7 @@
           <template #header>
             <pv-button icon="pi pi-backward" rounded severity="secondary" @click="()=>searched=false " />
             <div class ="img-container">
-            <img class="card-image" alt="user header" src="https://cdn.impel.io/swipetospin-viewers/autolandperu/bup372/20230921175035.A1AHPLNQ/closeups/cu-0.jpg" />
+            <img class="card-image" alt="user header" :src="carSelected.image" />
             </div>
           </template>
           <template #content>
@@ -249,6 +249,20 @@ export default{
           numVisible: 1,
           numScroll: 1
         }
+      ],
+      imagesCars:[
+          "https://i.pinimg.com/564x/33/38/5e/33385e250c8208664b2f58b26e978a0f.jpg",
+          "https://i.pinimg.com/236x/31/12/2b/31122b56bcaea2eb36b51138e1f840ac.jpg",
+          "https://i.pinimg.com/236x/98/04/16/980416b7504965bbfc8070348a6c7d40.jpg",
+          "https://i.pinimg.com/236x/f2/a8/c0/f2a8c0fcc225c182762f642891fbf1a7.jpg",
+          "https://i.pinimg.com/236x/50/f0/6f/50f06ff5176f0ca863849b59cdd47d60.jpg",
+          "https://i.pinimg.com/236x/29/52/5b/29525b9f645a05602959c73230773765.jpg",
+          "https://i.pinimg.com/236x/f8/8a/90/f88a90c9240a9250d0dab9956471f8e2.jpg",
+          "https://i.pinimg.com/236x/5e/75/6b/5e756b154b85deb5f6e8f7b61917ea44.jpg",
+          "https://i.pinimg.com/236x/7d/ac/a8/7daca897daa2036f7171a5e3d10d3f0f.jpg",
+          "https://i.pinimg.com/236x/80/d5/e5/80d5e51dcf3fec1182968c251d8d2a65.jpg," +
+          "https://i.pinimg.com/236x/52/e5/4c/52e54ce0320d4f89bea439bcb3a97d8e.jpg"
+
       ]
 
     };
@@ -257,7 +271,9 @@ export default{
   mounted() {
     new AutomovileService().getProductsSmall().then((response) => {
       (this.products = response.data)
-      console.log("Products: ",this.products);
+      for(let i=0;i<this.imagesCars.length;i++){
+        this.products[i].image=this.imagesCars[i];
+      }
     });
   },
   methods:{
@@ -315,6 +331,9 @@ export default{
 .card_carousel{
   width: 100%;
 
+}
+.img-center{
+  margin:auto;
 }
 .text1{
   font-weight: bold;

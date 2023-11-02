@@ -83,7 +83,6 @@ export default {
       //TODO
       this.security.login(this.username, this.password).then((response) => {
         GlobalData.setUserId(response.data);
-
         this.$router.push("/home-owner");
       }).catch((error) => {
         alert('invalid user');
