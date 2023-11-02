@@ -28,7 +28,7 @@
         <div class="inputp flex justify-content-center">
             <span>
               <label for="email" style="font-family: Poppins,serif ;color:black">{{ $t("email")  }}</label>
-              <pv-inputtext id="email" v-model="email" aria-describedby="username-help" class="inputp" type="text" required/>
+              <pv-inputtext id="email" v-model="username" aria-describedby="username-help" class="inputp" type="text" required/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ">Enter your email.</small>
             </span>
 
@@ -66,28 +66,27 @@
 
 <script>
 
-import {SecurityApiService} from "@/services/security-api.service";
+import {UserValidationRegisterService} from "@/services/user-validation-register.service";
+import GlobalData from "@/services/eventBus";
 
 export default {
   name: "login-Owner-component",
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
-      security:new SecurityApiService(),
+      security:new UserValidationRegisterService(),
     };
   },
   methods: {
     login() {
       //TODO
-
-      this.security.login(this.email, this.password).then((response) => {
-        if (response.data.accessToken) {
-          this.$router.push("/home-owner");
-        } else {
-          alert('invalid user');
-        }
-      })
+      this.security.login(this.username, this.password).then((response) => {
+        GlobalData.setUserId(response.data);
+        this.$router.push("/home-owner");
+      }).catch((error) => {
+        alert('invalid user');
+      });
     }
   }
 };

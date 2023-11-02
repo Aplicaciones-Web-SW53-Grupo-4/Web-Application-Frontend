@@ -11,10 +11,7 @@ import FooterComponent from "@/components/footer/footer-component.vue";
       <div class="welcome-content">
         <h1 class="texto1">Convierte tu auto</h1>
         <h1 class="texto2">en dinero extra</h1>
-        <div class="location-input">
-          <label for="location" class="location-label">Ubicación:</label>
-          <input type="text" id="location" class="location-field" placeholder="Ingrese su ubicación">
-        </div>
+
         <div><router-link to="/register-car"><pv-button class="combobox" id="btn" label="COMPARTE TU AUTO" /></router-link></div>
       </div>
     </div>

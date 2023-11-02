@@ -16,7 +16,7 @@
   </div>
   <br>
   <div class="card">
-    <pv-card class="p-cardcontent" style="width: 30em;height: 55em" >
+    <pv-card class="p-cardcontent" style="width: 30em;height: 72em" >
       <template #header>
         <router-link to="/register-tenant"><pv-button id="btn" :label="$t('tenant')"/></router-link>
         <router-link to="/register-owner"> <pv-button id="btn" :label="$t('owner')"  style="margin-left: 1em" /></router-link>
@@ -33,7 +33,7 @@
         <div class="inputp flex justify-content-center">
             <span>
               <label for="email" style="font-family: Poppins,serif ;color:black">{{$t("email")}} </label>
-              <pv-inputtext id="labels" v-model="email" aria-describedby="Ingrese su correo" class="inputp" type="text"/>
+              <pv-inputtext id="labels" v-model="username" aria-describedby="Ingrese su correo" class="inputp" type="text"/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ;font-size: 10px">Enter your email.</small>
             </span>
 
@@ -71,18 +71,41 @@
 
               </span>
         </div>
+      
+          <div class="inputp flex justify-content-center">
+                <span >
+                  <label for="" style="font-family: Poppins,serif;color:black">Departamento</label>
+                  <pv-inputtext id="labels" v-model="address.department"  aria-describedby="Ingrese su país" class="inputp" type="text" />
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your department.</small>
+
+                </span>
+          </div>
+            <div class="inputp flex justify-content-center">
+                <span >
+                  <label for="" style="font-family: Poppins,serif;color:black">Distrito</label>
+                  <pv-inputtext id="labels" v-model="address.district"  aria-describedby="Ingrese su distrito" class="inputp" type="text" />
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your district.</small>
+
+                </span>
+          </div>
+            <div class="inputp flex justify-content-center">
+                <span >
+                  <label for="" style="font-family: Poppins,serif;color:black">Provincia</label>
+                  <pv-inputtext id="labels" v-model="address.province"  aria-describedby="Ingrese su provincia" class="inputp" type="text" />
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your province.</small>
+                </span>
+          </div>
         <div class="inputp flex justify-content-center">
-              <span >
-                <label for="country" style="font-family: Poppins,serif;color:black">{{$t("country")}}</label>
-                <pv-inputtext id="labels" v-model="country"  aria-describedby="Ingrese su país" class="inputp" type="text" />
-                <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your country.</small>
+                <span >
+                  <label for="" style="font-family: Poppins,serif;color:black">Dirección</label>
+                  <pv-inputtext id="labels" v-model="address.street"  aria-describedby="Ingrese su dirección" class="inputp" type="text" />
+                  <small id="country-help" style="color:black;font-family: Poppins,serif;font-size: 10px ">Enter your street.</small>
 
-              </span>
-        </div>
-
+                </span>
+          </div>
       </template>
       <template #footer>
-        <pv-button id="btnprimary" :label="$t('register_login_owner')"  /><br><br>
+        <pv-button id="btnprimary" @click="register" :label="$t('register_login_owner')"  /><br><br>
         <label style="font-family: Poppins,serif;color:black">{{$t("question_tell")}} </label> <router-link to="/login-owner"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b> {{$t("login")}}</b></a></router-link><br><br>
         <label style="font-family: Poppins,serif;color:black">{{$t("Non_owner")}} </label> <router-link to="/register-tenant"><a href="#"  class="ov-btn-slide-left" style="color:#40019A"><b>{{$t("register_login_tenant")}}</b></a></router-link>
 
@@ -97,20 +120,49 @@
 
 <script>
 import UseApiService from "@/services/use-api-services";
-
+import {UserValidationRegisterService} from "@/services/user-validation-register.service";
+import GlobalData from "@/services/eventBus";
 export default {
+ 
   name: "register-owner-component",
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
       name:"",
       lastname:"",
-      phone:"",
-      country:"",
+      phone: "",
+      address: {
+        department: "",
+        province: "",
+        district: "",
+        street: "",
+      },
+      country: "",
+      userType:1,
       useApiService: new UseApiService(),
+
+      security: new UserValidationRegisterService(),
+
     };
   },
+
+  methods: {
+    register() {
+      //TOD
+       this.security.register(this.username, this.password,
+         this.userType, this.name, this.lastname, this.address,this.phone).then((response) => {
+        if (response.data) {
+          GlobalData.setUserId(response.data.id);
+          this.$router.push("/home-owner");
+        } else {
+          alert('invalid user');
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+  }
 };
 
 </script>
@@ -122,7 +174,7 @@ export default {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 1000px;
+  height: 1300px;
 }
 .toolbar-1{
   background-color: #14131B;

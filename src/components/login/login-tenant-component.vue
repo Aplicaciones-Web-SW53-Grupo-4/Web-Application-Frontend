@@ -30,7 +30,7 @@
         <div class="inputp flex justify-content-center">
             <span>
               <label for="email" style="font-family: Poppins,serif ;color:black">{{ $t("email")  }} </label>
-              <pv-inputtext id="email" v-model="email" aria-describedby="username-help" class="inputp" type="text"/>
+              <pv-inputtext id="email" v-model="username" aria-describedby="username-help" class="inputp" type="text"/>
               <small id="email-help" style="color:black;font-family: Poppins,serif ">Enter your email.</small>
             </span>
         </div>
@@ -60,31 +60,29 @@
 </template>
 
 <script>
-import {SecurityApiService} from "@/services/security-api.service";
-import {useStyle} from "primevue/usestyle";
+import {UserValidationRegisterService} from "@/services/user-validation-register.service";
+import GlobalData from "@/services/eventBus";
 
 export default {
   name: "login-Tenant-component",
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
-      security:new SecurityApiService(),
+      security:new UserValidationRegisterService(),
     };
   },
   methods: {
-    useStyle,
-    login(){
+    login() {
       //TODO
-
-      this.security.login(this.email,this.password).then((response)=>{
-        if(response.data.accessToken){
-          this.$router.push("/home-tenant");
-        }
-        else {
-          alert('invalid user');
-        }
-      })
+      this.security.login(this.username, this.password).then((response) => {
+        //TODO buscar manera de pasar el id a otros componentes
+        GlobalData.setUserId(response.id);
+        console.log("ID user: ", response);
+        this.$router.push("/home-tenant");
+      }).catch((error) => {
+        alert('invalid user');
+      });
     }
   }
 };

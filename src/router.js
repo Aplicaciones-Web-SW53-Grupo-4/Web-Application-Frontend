@@ -23,6 +23,7 @@ import registerCarComponent from "@/components/register-car/register-car.compone
 import searchCarComponent from "@/components/search-car/search-car.component.vue";
 import generateContractComponent from "@/components/register-car/generate-contract.component.vue";
 import RequestTenantComponent from "@/components/request/request-tenant-component.vue";
+import rentalAgreementComponent from "@/components/search-car/rental-agreement.component.vue";
 
 const routes = [
     { path: "/", component: welcome },
@@ -48,6 +49,7 @@ const routes = [
     {path: "/selection-payment", component: selectionPaymentCompoment},
     {path: "/request-tenant", component: RequestTenantComponent},
     { path: "/maintenance-tenant", component: maintenanceTenantComponent},
+    {path:"/rental-agreement",component: rentalAgreementComponent},
     { path: "/:pathMatch(.*)*", component: pageNotFound },
 ];
 
