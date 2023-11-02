@@ -67,6 +67,7 @@
 <script>
 
 import {UserValidationRegisterService} from "@/services/user-validation-register.service";
+import GlobalData from "@/services/eventBus";
 
 export default {
   name: "login-Owner-component",
@@ -81,8 +82,8 @@ export default {
     login() {
       //TODO
       this.security.login(this.username, this.password).then((response) => {
-        //TODO buscar manera de pasar el id a otros componentes
-        this.$emit('userLoggedIn', response.id);
+        GlobalData.setUserId(response.data);
+
         this.$router.push("/home-owner");
       }).catch((error) => {
         alert('invalid user');

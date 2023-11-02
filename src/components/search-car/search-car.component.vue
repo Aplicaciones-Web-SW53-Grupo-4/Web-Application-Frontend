@@ -6,7 +6,6 @@
         <div class="field">
           <label for="firstname1">Departamento</label> <br>
           <div class="card flex justify-content-center">
-
             <pv-dropdown v-model="selectedCity" :options="department" showClear optionLabel="name" placeholder="Select a Departament" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
           </div>
 <!--          <label for="firstname1">Departamento</label>-->
@@ -60,7 +59,6 @@
         </div>
 
         <div class="field">
-
     <label for="lastname1">Class Vehicule</label>
     <input v-model="classvehicules" id="lastname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
     </div>
@@ -69,11 +67,10 @@
 
      <label for="firstname1">Transmision</label>
      <input v-model="transmision" id="firstname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-     <pv-button class="btn" type="button" label="Search" icon="pi pi-search" :loading="loading" @click="search()"></pv-button>
+     <pv-button class="btn" type="button" label="Search" icon="pi pi-search" :loading="loading" @click=""></pv-button>
 
       </div>
       </div>
-
 
     <div class="flex-1 result-container max-h-30rem" v-if="!searched">
       <div class="card_carousel">
@@ -81,14 +78,16 @@
           <template #item="slotProps">
             <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
               <div class="mb-3">
+                <img :src="slotProps.data.image" :alt="slotProps.data.brand" class="w-100" />
               </div>
               <div>
                 <h4 class="mb-1">{{ slotProps.data.brand }}</h4>
-                <h6 class="mt-0 mb-3">{{ slotProps.data.price }}</h6>
+                <h6 class="mt-0 mb-3">S/{{ slotProps.data.price }} por día</h6>
+                <h4 class="mb-1">{{ slotProps.data.model }}</h4>
 
                 <div class="mt-5 flex align-items-center justify-content-center gap-2">
-                  <Button icon="pi pi-search" rounded />
-                  <Button icon="pi pi-star-fill" rounded severity="secondary" />
+                  <pv-button icon="pi pi-search" rounded @click="search(slotProps.data)" />
+                  <pv-button icon="pi pi-star-fill" rounded severity="secondary" />
                 </div>
               </div>
             </div>
@@ -97,16 +96,11 @@
       </div>
 
     </div>
-
-
-
-
-
-
       <div class="flex-1 result-container">
         <template v-if="searched">
         <pv-card>
           <template #header>
+            <pv-button icon="pi pi-backward" rounded severity="secondary" @click="()=>searched=false " />
             <div class ="img-container">
             <img class="card-image" alt="user header" src="https://cdn.impel.io/swipetospin-viewers/autolandperu/bup372/20230921175035.A1AHPLNQ/closeups/cu-0.jpg" />
             </div>
@@ -121,10 +115,10 @@
                   <template #title class="card-title"> Prestaciones </template>
                   <template #content>
                     <p>
-                      Velocidad máx   170 km/h
+                      Marca:  {{carSelected.brand}}
                     </p>
                     <p>
-                      Consumo   9.71/100 km
+                      Modelo:  {{carSelected.model}}
                     </p>
                   </template>
                 </pv-card>
@@ -132,16 +126,16 @@
                 <template #title class="card-title"> Propietario </template>
                 <template #content>
                   <p>
-                    Nombre  Erick Hernan
+                    Nombre:  {{profileUser.name}}
                   </p>
                   <p>
-                    Apellido  Ruiz Torres
+                    Apellidos:  {{profileUser.lastname}}
                   </p>
                   <p>
-                    Telefono  9902229191
+                    Telefono: {{profileUser.phone}}
                   </p>
                   <p>
-                    Correo  ericks1301@gmail.com
+                    Correo: {{profileUser.username}}
                   </p>
                 </template>
               </pv-card>
@@ -150,7 +144,7 @@
                 <template #title class="card-title"> Propiedades </template>
                 <template #content>
                   <p>
-                    Numero de asientos    4 asientos
+                    Numero de asientos:   {{carSelected.quantitySeat}}
                   </p>
                 </template>
               </pv-card>
@@ -159,7 +153,7 @@
                 <template #title class="card-title"> Costo de alquiler </template>
                 <template #content>
                   <p>
-                    Costo por mes    S/800
+                    Costo por día:  S/{{carSelected.price}}
                   </p>
                 </template>
               </pv-card>
@@ -175,7 +169,7 @@
 <script>
 import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
 import {AutomovileService} from "@/services/automovile.service";
-
+import useApiServices from "@/services/use-api-services";
 
 export default{
   name: "search-car.component",
@@ -184,7 +178,7 @@ export default{
     return {
       value:"",
       quantity:"",
-
+      carSelected:{},
       model:"",
       loading:false,
       searched:false,
@@ -218,6 +212,7 @@ export default{
         { name: 'Madre de Dios' },
       ],
       price:0,
+      profileUser:{},
       selectedbrand: null,
       brand: [
         { name: 'Toyota', code: 'TO' },
@@ -272,8 +267,10 @@ export default{
         this.loading.value = false;
       }, 2000)
     },
-    search(){
+    search(carData){
       this.searched=true;
+      this.carSelected = carData;
+      this.getProfileUser(carData.userId);
     },
     getSeverity(status) {
       switch (status) {
@@ -290,6 +287,11 @@ export default{
           return null;
       }
     },
+    getProfileUser(userId){
+      new useApiServices().getProfileByUserId(userId).then((response) => {
+        this.profileUser = response.data;
+      });
+    }
 
   }
 }

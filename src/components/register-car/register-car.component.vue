@@ -29,28 +29,41 @@
 
 
       <h3>Adicionales</h3>
-      <div class ="flex xl:flex-row lg:flex-row md:flex-column sm:flex-column flex-column container-camp">
-        <div class="field">
-          <label for="firstname1">Class</label>
-          <input v-model="classType" id="firstname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-
+      <div class="flex flex-wrap gap-3">
+        <label for="">Class</label>
+        <div class="flex align-items-center">
+          <pv-radiobutton v-model="classType" inputId="ingredient1" name="economic" value=0 />
+          <label for="ingredient1" class="ml-2">Economic</label>
         </div>
-
-        <div class="field">
-          <label for="firstname1">Transmision</label>
-          <input v-model="transmissionType" id="firstname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-
+        <div class="flex align-items-center">
+          <pv-radiobutton v-model="classType" inputId="ingredient2" name="medium" value=1 />
+          <label for="ingredient2" class="ml-2">Medium</label>
         </div>
+        <div class="flex align-items-center">
+          <pv-radiobutton v-model="classType" inputId="ingredient2" name="luxury" value=2 />
+          <label for="ingredient2" class="ml-2">Luxury</label>
+        </div>
+      </div>
 
+        <div class="flex flex-wrap gap-3 mt-4">
+          <label for="">Transmision</label>
+          <div class="flex align-items-center">
+            <pv-radiobutton v-model="transmissionType" inputId="ingredient1" name="automatic" value=0 />
+            <label for="ingredient1" class="ml-2">Automatic</label>
+          </div>
+          <div class="flex align-items-center">
+            <pv-radiobutton v-model="transmissionType" inputId="ingredient2" name="manual" value=1 />
+            <label for="ingredient2" class="ml-2">Manual</label>
+          </div>
       </div>
       <h3>Adicionales</h3>
       <div class ="flex flex-wrap container-camp ">
         <div class="field">
           <label for="firstname1">Tiempo de alquiler</label>
-          <input v-model="timeRent" id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          <input v-model="timeRent" id="firstname1"  type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
         <div class="field">
-          <label for="lastname1">Costo de alquiler al mes</label>
+          <label for="lastname1">Costo de alquiler al día</label>
           <input v-model="price" id="lastname1" type="number" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
         <div class="field">
@@ -79,6 +92,7 @@ import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.
 import ToolbarBarOwner from "@/components/toolbar/toolbar-bar-owner-component.vue";
 import {AutomovileService} from "@/services/automovile.service";
 import {UserValidationRegisterService} from "@/services/user-validation-register.service";
+import GlobalData from "@/services/eventBus";
 
 export default{
   name: "register-car.component",
@@ -89,16 +103,16 @@ export default{
       loading:false,
       selectedtransmission:null,
       selectedclase: null,
-      brand:"",
-      price:0,
-      model:"",
-      color:"",
-      quantitySeat:"",
+      brand:"Toyota",
+      price:200,
+      model:"Yaris",
+      color:"rojo",
+      quantitySeat:4,
       transmissionType:0,
       classType:0,
       place:"",
-      timeRent:0,
-      userId:1,
+      timeRent:"2 dias",
+      userId:2,
       transmisionType_:[
         {name:'Automatic'},
         {name:'Manual'},
@@ -110,6 +124,9 @@ export default{
       ],
     }
   },
+  mounted() {
+    this.userId = GlobalData.getUserId()
+  },
   methods:{
     addImage(){
       const inputFile = document.getElementById("input-image");
@@ -117,8 +134,8 @@ export default{
     },
     getregister() {
       //TOD
-      this.security.getregister(this.brand,this.price,this.model,this.color,this.quantitySeat,this.transmissionType,
-      this.classType,this.place,this.timeRent,this.userId).then((response) => {
+      this.security.getregister(this.brand,this.price,this.model,this.color,this.quantitySeat,parseInt(this.transmissionType),
+      parseInt(this.classType),this.place,this.timeRent,this.userId).then((response) => {
         if (response.data) {
           alert("se ha registrado su vehiculo");
           // this.$router.push("/home-owner");

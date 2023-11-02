@@ -61,6 +61,7 @@
 
 <script>
 import {UserValidationRegisterService} from "@/services/user-validation-register.service";
+import GlobalData from "@/services/eventBus";
 
 export default {
   name: "login-Tenant-component",
@@ -76,7 +77,8 @@ export default {
       //TODO
       this.security.login(this.username, this.password).then((response) => {
         //TODO buscar manera de pasar el id a otros componentes
-        this.$emit('userLoggedIn', response.id);
+        GlobalData.setUserId(response.id);
+        console.log("ID user: ", response);
         this.$router.push("/home-tenant");
       }).catch((error) => {
         alert('invalid user');

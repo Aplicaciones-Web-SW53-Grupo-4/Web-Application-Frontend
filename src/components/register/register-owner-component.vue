@@ -121,6 +121,7 @@
 <script>
 import UseApiService from "@/services/use-api-services";
 import {UserValidationRegisterService} from "@/services/user-validation-register.service";
+import GlobalData from "@/services/eventBus";
 export default {
  
   name: "register-owner-component",
@@ -145,12 +146,14 @@ export default {
 
     };
   },
-   methods: {
+
+  methods: {
     register() {
       //TOD
        this.security.register(this.username, this.password,
          this.userType, this.name, this.lastname, this.address,this.phone).then((response) => {
         if (response.data) {
+          GlobalData.setUserId(response.data.id);
           this.$router.push("/home-owner");
         } else {
           alert('invalid user');

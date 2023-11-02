@@ -2,7 +2,8 @@
 import ToolbarBarOwner from "@/components/toolbar/toolbar-bar-owner-component.vue";
 import FooterComponent from "@/components/footer/footer-component.vue";
 import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
-
+import GlobalData from "@/services/eventBus";
+import UseApiService from "@/services/use-api-services";
 export default {
   components: {ToolbarBarTenant, FooterComponent, ToolbarBarOwner },
   data() {
@@ -49,7 +50,6 @@ export default {
         <p><strong>Apellidos:</strong> {{ user.apellidos }}</p>
         <p><strong>Celular:</strong> {{ user.phone }}</p>
         <p><strong>Correo:</strong> {{ user.email }}</p>
-        <p><strong>Contraseña:</strong> ********</p>
         <p><strong>Cantidad de vehiculos alquilados:</strong> {{ user.vhal }}</p>
       </div>
       <div class="user-buttons">

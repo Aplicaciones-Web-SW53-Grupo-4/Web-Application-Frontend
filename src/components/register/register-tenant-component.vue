@@ -118,6 +118,7 @@
 <script>
 import UseApiService from "@/services/use-api-services";
 import {UserValidationRegisterService} from "@/services/user-validation-register.service";
+import GlobalData from "@/services/eventBus";
 
 export default {
   name: "register-tenant-component",
@@ -147,6 +148,7 @@ export default {
       this.security.register(this.username, this.password,
           this.userType, this.name, this.lastname, this.address,this.phone).then((response) => {
         if (response.data) {
+          GlobalData.setUserId(response.data.id);
           this.$router.push("/home-tenant");
         } else {
           alert('invalid user');

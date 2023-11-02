@@ -1,6 +1,8 @@
 <script>
 import ToolbarBarOwner from "@/components/toolbar/toolbar-bar-owner-component.vue";
 import FooterComponent from "@/components/footer/footer-component.vue";
+import GlobalData from "@/services/eventBus";
+import UseApiService from "@/services/use-api-services";
 
 export default {
   components: { FooterComponent, ToolbarBarOwner },
@@ -10,12 +12,26 @@ export default {
         rol: 'Propietario',
         name: 'John Doe',
         vhal: '1',
-        apellidos: 'Quispe Mamani',
+        lastname: 'Quispe Mamani',
         email: 'johndoe@example.com',
         phone: '+12 34567890',
         imageUrl: 'https://via.placeholder.com/150',
       },
     };
+  },
+  mounted() {
+    console.log("Entró");
+    this.userId = GlobalData.getUserId();
+    console.log("Userid: ",this.userId);
+    new UseApiService().getProfileByUserId(this.userId).then((response) => {
+          this.user.name = response.data.name;
+          this.user.role = "Arrendatario";
+          this.user.lastname = response.data.lastname;
+          this.user.email = response.data.username;
+          this.user.phone = response.data.phone;
+          this.user.vhal = response.data.automobiles.length;
+          this.user.imageUrl = response.data.image;
+  });
   },
   methods: {
     openImageInput() {
@@ -34,60 +50,6 @@ export default {
     editProfile() {
     },
   },
-
-
-// export default {
-//   components: { FooterComponent, ToolbarBarOwner },
-  // data() {
-  //   return {
-  //     user: {
-  //       rol: '',
-  //       name: '',
-  //       lastname: '',
-  //       email: 'johndoe@example.com',
-  //       phone: '+12 34567890',
-  //       quantityvehiclesrented: '',
-  //       imageUrl: 'https://via.placeholder.com/150',
-  //     },
-  //     useApi: new UseApiService(),
-  //     loggedInUserId: null,
-  //   };
-  // },
-  // methods: {
-  //   openImageInput() {
-  //     this.$refs.imageInput.click();
-  //   },
-  //   handleImageChange(event) {
-  //     const selectedFile = event.target.files[0];
-  //     if (selectedFile) {
-  //       const reader = new FileReader();
-  //       reader.onload = (e) => {
-  //         this.user.imageUrl = e.target.result;
-  //       };
-  //       reader.readAsDataURL(selectedFile);
-  //     }
-  //   },
-  //   editProfile() {
-  //
-  //   },
-  // },
-  // created() {
-  //   //TODO cambiar implementación
-  //    EventBus.$on('userLoggedIn', (userId) => {
-  //     this.loggedInUserId = userId;
-  //   });
-  // },
-  // mounted() {
-  //   this.useApi.getUserById(this.loggedInUserId).then((response) => {
-  //     this.user.name = response.data.name;
-  //     this.user.lastname = response.data.lastname;
-  //     this.user.email = response.data.email;
-  //     this.user.phone = response.data.phone;
-  //     this.user.quantityvehiclesrented = response.data.quantityvehiclesrented;
-  //     this.user.rol = "Propietario"
-  //
-  //   });
-  // },
 };
 </script>
 
@@ -102,7 +64,6 @@ export default {
         <p><strong>Apellidos:</strong> {{ user.lastname }}</p>
         <p><strong>Celular:</strong> {{ user.phone }}</p>
         <p><strong>Correo:</strong> {{ user.email }}</p>
-        <!-- <p><strong>Contraseña:</strong> ********</p> -->
       </div>
       <div class="user-buttons">
         <button @click="editProfile">Actualizar datos</button>
