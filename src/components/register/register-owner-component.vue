@@ -12,7 +12,6 @@
 
 
   <div >
-    <!--      <pv-images src="https://i.postimg.cc/cCbb1f2m/pexels-pixabay-417192.jpg" alt="Image" width="1000" />-->
   </div>
   <br>
   <div class="card">

@@ -54,12 +54,11 @@ export default {
       </div>
       <div class="user-buttons">
         <button @click="editProfile">Actualizar datos</button>
-        <!--<button @click="openImageInput">Subir documentos de antecedentes penales</button>-->
         <router-link to="/login-tenant"><pv-button  id="btn" :label="$t('logout')"  /></router-link>
       </div>
     </div>
     <div class="profile-image">
-      <input type="file" accept="image/*" @change="handleImageChange" style="display: none" ref="imageInput" />
+
       <img :src="user.imageUrl" alt="Perfil del usuario" @click="openImageInput" /><br>
       <button @click="openImageInput">Cambiar foto de perfil</button>
     </div>
@@ -97,11 +96,13 @@ export default {
 
 .user-info p {
   font-size: 20px;
+
 }
 
 .user-buttons {
   display: flex;
   flex-direction: column;
+  max-width:60em;
 }
 
 .user-buttons button {
@@ -112,7 +113,7 @@ export default {
   border-radius: 15px;
   cursor: pointer;
   margin-top: 10px;
-  width: 60%;
+  width: 100%;
 }
 
 .profile-image {
