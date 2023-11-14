@@ -12,7 +12,7 @@
 
   <br>
   <div class="card">
-    <pv-card class="p-cardcontent" style="width: 30em;height: 55em" >
+    <pv-card class="p-cardcontent" style="width: 30em;height: 72em" >
       <template #header>
         <router-link to="/register-tenant"><pv-button id="btn" :label="$t('tenant')"/></router-link>
         <router-link to="/register-owner"> <pv-button id="btn" :label="$t('owner')" style="margin-left: 1em" /></router-link>
@@ -169,7 +169,7 @@ export default {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 1000px;
+  height: 1300px;
 }
 .toolbar-1{
   background-color: #14131B;
