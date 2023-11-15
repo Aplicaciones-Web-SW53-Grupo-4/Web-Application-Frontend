@@ -22,10 +22,15 @@ import Dropdown from 'primevue/dropdown';
 import Carousel from 'primevue/carousel';
 import RadioButton from "primevue/radiobutton";
 
+
+
+
+
 const app =createApp(App);
 app.use(i18n);
 app.use(PrimeVue);
 app.use(router);
+
 app.component("pv-toolbar",Toolbar);
 app.component("pv-images",Image);
 app.component("pv-card",Card);
