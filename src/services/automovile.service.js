@@ -5,8 +5,8 @@ export class AutomovileService{
     getProductsSmall(){
         return axios.get(`${basePath}/api/Automobile/search-car/getAll`);
     }
-    getregister(brand, price, model, color, quantitySeat,transmissionType,classType,place,timeRent,userId) {
-        const body = { brand, price, model, color, quantitySeat,transmissionType,classType,place,timeRent,userId};
+    getregister(brand, price, model, color, quantitySeat,transmissionType,classType,place,timeRent,userId,imageurl) {
+        const body = { brand, price, model, color, quantitySeat,transmissionType,classType,place,timeRent,userId,imageurl};
     console.log(body);
         return axios.post(`${basePath}/api/Automobile/register`,body);
     }

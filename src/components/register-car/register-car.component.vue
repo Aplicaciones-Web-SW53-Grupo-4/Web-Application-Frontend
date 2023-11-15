@@ -1,7 +1,9 @@
 <template>
   <toolbar-bar-owner></toolbar-bar-owner>
+
   <h1 class="text1">Registro de vehículo</h1>
   <div class="flex flex-column xl:flex-row lg:flex-row  sm:flex-column md:flex-column  sm:justify-content-center md:justify-content-center">
+
     <div class="flex flex-1 form-container flex-column xl:pr-6 lg:pr-6" >
       <div class ="flex xl:flex-row lg:flex-row md:flex-column sm:flex-column flex-column container-camp ">
         <div class="field">
@@ -68,35 +70,39 @@
         </div>
         <div class="field">
           <label for="lastname1">Lugar del recojo del vehículo</label>
+
           <input v-model="place" id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
       </div>
         <pv-button  @click="getregister" class="btn-register" type="button" label="Registrar"></pv-button>
 
     </div>
-    <div class="flex flex-1  result-container flex-column align-items-center justify-content-around">
-      <input type="file" id="input-image"/>
-      <div class = "btn flex input-photos  justify-content-center align-items-center" @click="addImage()">
-          Subir fotos<i class="pi pi-plus"></i>
-      </div>
+
+    <div >
+      <form ref="form">
+        <input type="file" @change="handleImageChange" multiple tabindex="-1">
+      </form>
+
+
       <RouterLink to="/generate-contract">
       <div class = "btn flex btn-contract flex justify-content-center align-items-center">
         Crear contrato de alquiler
       </div>
       </RouterLink>
     </div>
+
   </div>
 </template>
 <script>
 import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
 import ToolbarBarOwner from "@/components/toolbar/toolbar-bar-owner-component.vue";
 import {AutomovileService} from "@/services/automovile.service";
-import {UserValidationRegisterService} from "@/services/user-validation-register.service";
 import GlobalData from "@/services/eventBus";
-
+import storage from "@/firebase";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 export default{
   name: "register-car.component",
-  components: {ToolbarBarOwner, ToolbarBarTenant},
+  components: {ToolbarBarOwner},
   data(){
     return {
       security: new AutomovileService(),
@@ -110,9 +116,11 @@ export default{
       quantitySeat:4,
       transmissionType:0,
       classType:0,
+      selectedFile: null,
       place:"",
       timeRent:"2 dias",
       userId:"",
+      imageurl:"",
       transmisionType_:[
         {name:'Automatic'},
         {name:'Manual'},
@@ -126,16 +134,35 @@ export default{
   },
   mounted() {
     this.userId = GlobalData.getUserId()
+
   },
   methods:{
     addImage(){
       const inputFile = document.getElementById("input-image");
       inputFile.click();
     },
+    async handleImageChange(event) {
+      const selectedFile = event.target.files[0];
+      if (selectedFile) {
+        const storage = getStorage();
+        const storageRef = ref(storage, `uploads/${selectedFile.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, selectedFile);
+
+        uploadTask.on('state_changed',
+            // ... tus eventos de progreso y manejo de errores ...
+            async () => {
+              // La carga se completó exitosamente, ahora puedes obtener la URL de descarga
+              const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+              console.log('File available at', downloadURL);
+              this.imageurl = downloadURL; // Guarda la URL en data
+            }
+        );
+      }
+    },
     getregister() {
       //TOD
       this.security.getregister(this.brand,this.price,this.model,this.color,this.quantitySeat,parseInt(this.transmissionType),
-      parseInt(this.classType),this.place,this.timeRent,this.userId).then((response) => {
+      parseInt(this.classType),this.place,this.timeRent,this.userId,   this.imageurl   ).then((response) => {
         if (response.data) {
           alert("se ha registrado su vehiculo");
           // this.$router.push("/home-owner");
