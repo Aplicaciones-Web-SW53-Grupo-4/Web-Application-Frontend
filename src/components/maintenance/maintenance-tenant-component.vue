@@ -38,10 +38,6 @@
 
         <br>
 
-        <div class="input-container">
-          <label for="title-problem" class="label">Titulo del problema</label>
-          <pv-inputtext id="title-problem" v-model="titleProblem" class="input" type="text" placeholder="Titulo del problema" />
-        </div>
 
         <br>
 

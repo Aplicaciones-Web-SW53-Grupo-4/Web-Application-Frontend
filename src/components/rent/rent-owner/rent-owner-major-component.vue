@@ -6,19 +6,40 @@
     <br>
     <div id="titulo-seccion">
       <label >ALQUILER</label>
-    </div>
-    <div style="text-align: end ">
-      <label style="font-family: 'Poppins',sans-serif;">Agiliza tus pago afiliando tu cuenta  de banco con MODO </label><br>
-      <router-link to="/.."><pv-button   label="Afiliar Cuenta con MODO" style="background-color: #40019A;font-family: 'Poppins',sans-serif;box-shadow: none" /></router-link><br>
+      <div>
+        <router-link to="/register-car"><pv-button   label="AGREGAR AUTO"  /></router-link>
+      </div>
+
     </div>
 
-    <div class="card">
-      <pv-card class="p-cardcontent" >
+
+
+      <pv-card  >
         <template #content>
-          <router-link to="/register-car"><pv-button  id="btnprimary" label="AGREGAR AUTO"  /></router-link>
+          <div class="card_carousel">
+            <pv-carousel :value="products" :numVisible="1" :numScroll="1" :responsiveOptions="responsiveOptions" >
+              <template #item="slotProps">
+                <div class="flex flex-column align-items-center   text-center  ">
+                  <div class="align-items-center justify-content-center w-6  ">
+                    <img :src="['https://i.pinimg.com/564x/33/38/5e/33385e250c8208664b2f58b26e978a0f.jpg']" :alt="slotProps.data.brand" class="h-full w-full" />
+                  </div>
+
+                  <div class=" align-items-center justify-content-center ">
+                    <br>
+                    <h4 >BRAND: {{ slotProps.data.brand }}</h4>
+                    <h4 >PRICE: S/{{ slotProps.data.price }} por día</h4>
+                    <h4 >MODEL: {{ slotProps.data.model }}</h4>
+                    <h4 >COLOR: {{ slotProps.data.color }}</h4>
+                    <h4 >STATUS RENT: {{ slotProps.data.statusRequestString }}</h4>
+                  </div>
+                </div>
+              </template>
+            </pv-carousel >
+          </div>
         </template>
       </pv-card>
-    </div>
+
+
   </div>
 </template>
 
@@ -30,6 +51,7 @@
 
 import UseApiService from "@/services/use-api-services";
 import ToolbarBar from "@/components/toolbar/toolbar-bar-owner-component.vue";
+import {AutomovileService} from "@/services/automovile.service";
 
 
 export default {
@@ -40,8 +62,36 @@ export default {
     return {
       email: "",
       password: "",
+      products: null,
+      responsiveOptions: [
+        {
+          breakpoint: '1400px',
+          numVisible: 2,
+          numScroll: 1
+        },
+        {
+          breakpoint: '1199px',
+          numVisible: 3,
+          numScroll: 1
+        },
+        {
+          breakpoint: '767px',
+          numVisible: 2,
+          numScroll: 1
+        },
+        {
+          breakpoint: '575px',
+          numVisible: 1,
+          numScroll: 1
+        }
+      ],
       useApiService: new UseApiService(),
     };
+  },
+  mounted() {
+    new AutomovileService().getProductsSmall().then((response) => {
+      (this.products = response.data)
+    });
   },
 };
 
@@ -82,6 +132,10 @@ export default {
 }
 #btnprimary:hover{
   background-color:#310077;
+}
+.card_carousel{
+  width: 100%;
+
 }
 @media all and (max-width: 840px) {
   #titulo-seccion{
