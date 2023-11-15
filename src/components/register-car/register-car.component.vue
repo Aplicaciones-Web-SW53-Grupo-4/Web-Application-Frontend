@@ -112,7 +112,7 @@ export default{
       classType:0,
       place:"",
       timeRent:"2 dias",
-      userId:2,
+      userId:"",
       transmisionType_:[
         {name:'Automatic'},
         {name:'Manual'},

@@ -1,15 +1,19 @@
 import {ref} from "vue";
 
 export default class GlobalData {
-    static userId = ref(-10);
+    static userId = ref("-10");
 
     static setUserId(id) {
-        console.log("VAlor nuevo: ",id);
+        localStorage.setItem("userId", id);
         this.userId.value = id;
+
     }
 
     static getUserId() {
-        console.log("Valor actual: ",this.userId.value)
+        const storedId = localStorage.getItem("userId");
+        if (storedId) {
+            this.userId.value = storedId;
+        }
         return this.userId.value;
     }
 }
