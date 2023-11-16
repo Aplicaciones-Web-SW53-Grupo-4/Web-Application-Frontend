@@ -134,7 +134,7 @@ export default{
   },
   mounted() {
     this.userId = GlobalData.getUserId()
-
+    console.log("User id: ",this.userId)
   },
   methods:{
     addImage(){
@@ -170,7 +170,7 @@ export default{
           alert('invalid user');
         }
       }).catch((error) => {
-        console.log(error);
+        alert("Error al crear el vehículo")
       });
     }
   }
