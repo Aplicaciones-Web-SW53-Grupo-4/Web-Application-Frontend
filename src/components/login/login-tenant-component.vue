@@ -70,12 +70,13 @@ export default {
       username: "",
       password: "",
       security:new UserValidationRegisterService(),
+      userType:0,
     };
   },
   methods: {
     login() {
       //TODO
-      this.security.login(this.username, this.password).then((response) => {
+      this.security.login(this.username, this.password,this.userType).then((response) => {
         //TODO buscar manera de pasar el id a otros componentes
         GlobalData.setUserId(response.id);
         console.log("ID user: ", response);

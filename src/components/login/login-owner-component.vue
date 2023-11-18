@@ -76,12 +76,13 @@ export default {
       username: "",
       password: "",
       security:new UserValidationRegisterService(),
+      userType:1,
     };
   },
   methods: {
     login() {
       //TODO
-      this.security.login(this.username, this.password).then((response) => {
+      this.security.login(this.username, this.password,this.userType ).then((response) => {
         GlobalData.setUserId(response.data);
         this.$router.push("/home-owner");
       }).catch((error) => {

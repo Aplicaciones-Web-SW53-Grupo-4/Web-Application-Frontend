@@ -10,7 +10,12 @@ export class AutomovileService{
         console.log(body);
         return axios.post(`${basePath}/api/Automobile/register`,body);
     }
-
+    getAutomobilesByFilter(brand, price, model, quantitySeat,transmissionType,classType,timeRent){
+        const params = {
+            brand, price, model, quantitySeat,transmissionType,classType,timeRent};
+        console.log(params);
+        return axios.get(`${basePath}/api/Automobile/search-car/getfilter`,params);
+    }
 
 
 }

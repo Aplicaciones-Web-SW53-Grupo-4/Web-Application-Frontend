@@ -2,7 +2,7 @@
   <toolbar-bar-tenant></toolbar-bar-tenant>
   <div
       class="flex  flex-wrap ">
-    <div class=" form-container flex-column flex" >
+    <div class=" form-container flex-column flex">
       <h1 class="text1">Busca un auto</h1>
       <div class="field">
         <label for="firstname1">Departamento</label> <br>
@@ -81,7 +81,7 @@
         <input v-model="transmision" id="firstname1" type="number"
                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         <pv-button class="btn" type="button" label="Search" icon="pi pi-search" :loading="loading"
-                   @click=""></pv-button>
+                   @click="getAutomobilesByFilter"></pv-button>
 
       </div>
     </div>
@@ -215,6 +215,7 @@
 import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
 import {AutomovileService} from "@/services/automovile.service";
 import useApiServices from "@/services/use-api-services";
+import {ref} from "vue";
 
 export default {
   name: "search-car.component",
@@ -272,7 +273,7 @@ export default {
       classvehicules: 0,
 
       transmision: 0,
-      products: null,
+      products: ref([]),
       responsiveOptions: [
         {
           breakpoint: '1400px',
@@ -295,21 +296,6 @@ export default {
           numScroll: 1
         }
       ],
-      imagesCars: [
-        "https://i.pinimg.com/564x/33/38/5e/33385e250c8208664b2f58b26e978a0f.jpg",
-        "https://i.pinimg.com/236x/31/12/2b/31122b56bcaea2eb36b51138e1f840ac.jpg",
-        "https://i.pinimg.com/236x/98/04/16/980416b7504965bbfc8070348a6c7d40.jpg",
-        "https://i.pinimg.com/236x/f2/a8/c0/f2a8c0fcc225c182762f642891fbf1a7.jpg",
-        "https://i.pinimg.com/236x/50/f0/6f/50f06ff5176f0ca863849b59cdd47d60.jpg",
-        "https://i.pinimg.com/236x/29/52/5b/29525b9f645a05602959c73230773765.jpg",
-        "https://i.pinimg.com/236x/f8/8a/90/f88a90c9240a9250d0dab9956471f8e2.jpg",
-        "https://i.pinimg.com/236x/5e/75/6b/5e756b154b85deb5f6e8f7b61917ea44.jpg",
-        "https://i.pinimg.com/236x/7d/ac/a8/7daca897daa2036f7171a5e3d10d3f0f.jpg",
-        "https://i.pinimg.com/236x/80/d5/e5/80d5e51dcf3fec1182968c251d8d2a65.jpg," +
-        "https://i.pinimg.com/236x/52/e5/4c/52e54ce0320d4f89bea439bcb3a97d8e.jpg"
-
-      ]
-
     };
 
   },
@@ -344,6 +330,13 @@ export default {
         default:
           return null;
       }
+    },
+    getAutomobilesByFilter(){
+      new AutomovileService().getAutomobilesByFilter(this.selectedbrand.name,this.price,this.model,
+        this.quantity,this.transmision,this.classvehicules,this.selectedtime).then((response) => {
+        this.products = response.data;
+        console.log("Products: ",response.data);
+      });
     },
     getProfileUser(userId) {
       new useApiServices().getProfileByUserId(userId).then((response) => {
