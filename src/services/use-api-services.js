@@ -23,7 +23,6 @@ class UseApiService {
     }
 
 
-
     getProfileByUserId(id) {
         return http.get(`/Profile/${id}`)
     }
