@@ -6,13 +6,13 @@
     <div class="request-list">
       <div v-for="request in carRequests" :key="request.id" class="request-card">
         <div class="avatar">
-          <img :src="request.image" alt="Car Avatar" />
+          <img :src="request.automobile.imageurl" alt="Car Avatar" />
         </div>
         <div class="request-details">
-          <h3 style="font-family: 'Arial Black', sans-serif; color: #00BFFF;">{{ request.car }}</h3>
-          <p> Estado de Solicitud: {{ request.status }}</p>
-          <p>Propietario: {{ getRandomOwnerName() }}</p>
-          <p>Fecha de Solicitud: {{ request.date }}</p>
+          <h3 style="font-family: 'Arial Black', sans-serif; color: #00BFFF;">{{ request.automobile.brand}} {{request.automobile.model}}</h3>
+          <p> <b>Estado de Solicitud: </b> <div :class="stylesStatusRequests[request.statusRequest]">{{ statusRequest[request.statusRequest] }}</div></p>
+          <p> <b>Propietario:</b> {{ request.owner.name }} {{request.owner.lastname}}</p>
+          <p> <b>Fecha de Solicitud:</b> {{ formatearFecha(new Date(request.dateCreated)) }}</p>
         </div>
       </div>
     </div>
@@ -21,35 +21,65 @@
 
 <script>
 import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
+import {RentService} from "@/services/rentService";
+import GlobalData from "@/services/eventBus";
 
 export default {
   name: "RequestTenantComponent",
   components: { ToolbarBarTenant },
+  mounted() {
+    new RentService().getRequestsByTenantId(GlobalData.getUserId()).then((response) => {
+      if (response.status === 200) {
+        console.log(response)
+        this.carRequests = response.data;
+        console.log(this.carRequests)
+      }
+    }).catch((error) => {
+      console.log(error)
+      alert("Error al obtener solicitudes de alquiler");
+    });
+  },
   data() {
     return {
-      carRequests: [
-        { id: 1, car: "Toyota Prius", status: "Aceptado", image: "car1.jpg", date: "2023-09-15" },
-        { id: 2, car: "Honda Civic", status: "Rechazado", image: "car2.jpg", date: "2023-09-14" },
-        { id: 3, car: "Ford Mustang", status: "En Espera", image: "car3.jpg", date: "2023-09-13" },
-        { id: 4, car: "Chevrolet Camaro", status: "En Espera", image: "car4.jpg", date: "2023-09-12" },
-        { id: 5, car: "BMW X5", status: "Aceptado", image: "car5.jpg", date: "2023-09-11" },
-        { id: 6, car: "Mercedes-Benz C-Class", status: "Rechazado", image: "car6.jpg", date: "2022-09-10" },
-        { id: 7, car: "Audi A4", status: "En Espera", image: "car7.jpg", date: "2023-09-09" },
-      ],
-      ownerNames: ["John Doe", "Jane Smith", "Mike Johnson", "Sarah Davis", "Robert Wilson"],
+      carRequests: [],
+      statusRequest:["Pendiente","Aceptado","Rechazado"],
+      stylesStatusRequests:["waiting","accepted","rejected"]
     };
   },
   methods: {
-    getRandomOwnerName() {
-      const randomIndex = Math.floor(Math.random() * this.ownerNames.length);
-      return this.ownerNames[randomIndex];
-    },
+    formatearFecha(fecha) {
+      const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // Para usar el formato de 24 horas
+      };
+
+      return new Intl.DateTimeFormat('es-ES', options).format(fecha);
+    }
   },
 };
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Arial+Black&display=swap');
+
+.waiting{
+  background-color:yellow;
+  text-align:center;
+  border-radius: 5px;
+}
+.accepted{
+  background-color:green;
+  text-align:center;
+}
+.rejected{
+  background-color:red;
+  text-align:center;
+
+}
 
 h2 {
   font-size: 24px;

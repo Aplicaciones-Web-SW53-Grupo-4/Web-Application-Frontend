@@ -133,7 +133,7 @@
             <pv-button icon="pi pi-star-fill" rounded severity="secondary"/>
           </div>
           <div class="mt-3">
-            <pv-button label="Alquilar Vehículo"/>
+            <pv-button label="Alquilar Vehículo" @click="requestRent(product)"/>
           </div>
         </div>
       </div>
@@ -342,8 +342,13 @@ export default {
       new useApiServices().getProfileByUserId(userId).then((response) => {
         this.profileUser = response.data;
       });
-    }
-
+    },
+    requestRent(product){
+      this.$router.push({
+        path: '/selection-payment',
+        query: { product: btoa(JSON.stringify(product)) }
+      });
+    },
   }
 }
 </script>

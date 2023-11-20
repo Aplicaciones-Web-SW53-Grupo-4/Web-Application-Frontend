@@ -152,7 +152,7 @@ export default {
        this.security.register(this.username, this.password,
          this.userType, this.name, this.lastname, this.address,this.phone).then((response) => {
         if (response.data) {
-          GlobalData.setUserId(response.data.id);
+          GlobalData.setUserId(response.data);
           this.$router.push("/home-owner");
         } else {
           alert('invalid user');

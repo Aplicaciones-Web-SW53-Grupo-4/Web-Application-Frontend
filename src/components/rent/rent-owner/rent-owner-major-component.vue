@@ -21,7 +21,7 @@
               <template #item="slotProps">
                 <div class="flex flex-column align-items-center   text-center  ">
                   <div class="align-items-center justify-content-center w-6  ">
-                    <img :src="['https://i.pinimg.com/564x/33/38/5e/33385e250c8208664b2f58b26e978a0f.jpg']" :alt="slotProps.data.brand" class="h-full w-full" />
+                    <img :src="slotProps.data.imageurl" :alt="slotProps.data.brand" class="h-full w-full" />
                   </div>
 
                   <div class=" align-items-center justify-content-center ">
@@ -52,6 +52,7 @@
 import UseApiService from "@/services/use-api-services";
 import ToolbarBar from "@/components/toolbar/toolbar-bar-owner-component.vue";
 import {AutomovileService} from "@/services/automovile.service";
+import GlobalData from "@/services/eventBus";
 
 
 export default {
@@ -89,8 +90,9 @@ export default {
     };
   },
   mounted() {
-    new AutomovileService().getProductsSmall().then((response) => {
+    new AutomovileService().getAutomobilesByOwnerId(GlobalData.getUserId()).then((response) => {
       (this.products = response.data)
+      console.log(this.products)
     });
   },
 };
