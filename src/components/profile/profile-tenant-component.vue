@@ -12,12 +12,27 @@ export default {
         rol: 'Arrendatario',
         name: 'John Doe',
         vhal: '1',
-        apellidos: 'Quispe Mamani',
+        lastname: 'Quispe Mamani',
         email: 'johndoe@example.com',
         phone: '+12 34567890',
         imageUrl: 'https://via.placeholder.com/150',
       },
+      userId:""
     };
+  },
+  mounted() {
+    console.log("Entró");
+    this.userId = GlobalData.getUserId();
+    console.log("Userid: ",this.userId);
+    new UseApiService().getProfileByUserId(this.userId).then((response) => {
+      this.user.name = response.data.name;
+      this.user.role = "Propietario";
+      this.user.lastname = response.data.lastname;
+      this.user.email = response.data.username;
+      this.user.phone = response.data.phone;
+      this.user.vhal = response.data.automobiles.length;
+      this.user.imageUrl = response.data.image;
+    });
   },
   methods: {
     openImageInput() {
@@ -47,7 +62,7 @@ export default {
       <div class="user-info">
         <p><strong>Rol:</strong> {{ user.rol }}</p>
         <p><strong>Nombres:</strong> {{ user.name }}</p>
-        <p><strong>Apellidos:</strong> {{ user.apellidos }}</p>
+        <p><strong>Apellidos:</strong> {{ user.lastname }}</p>
         <p><strong>Celular:</strong> {{ user.phone }}</p>
         <p><strong>Correo:</strong> {{ user.email }}</p>
         <p><strong>Cantidad de vehiculos alquilados:</strong> {{ user.vhal }}</p>

@@ -17,5 +17,8 @@ export class AutomovileService{
         return axios.get(`${basePath}/api/Automobile/search-car/getfilter`,params);
     }
 
+    getAutomobilesByOwnerId(ownerId){
+        return axios.get(`${basePath}/api/Automobile/get-cars/${ownerId}`);
+    }
 
 }

@@ -5,7 +5,7 @@
     <toolbar-bar-tenant></toolbar-bar-tenant>
     <br>
     <div id="titulo-seccion">
-      <label >Pago de Alquiler</label>
+      <label >Solicitud de Alquiler</label>
     </div>
     <div class="card">
       <pv-card class="p-cardcontent" >
@@ -14,35 +14,35 @@
         </template>
         <template #content>
           <p class="text-content">
-            Precio de Alquiler:  <br>
-            Tiempo de Alquiler: <br>
-            Fecha de inicio de contrato: <br>
-            Fecha de fin de contrato:<br>
-            Lugar de recojo y entrega de vehículo:
+            Precio de Alquiler (por día): S/.{{carSelected.price}} <br>
+            Tiempo de Alquiler Máximo: {{carSelected.timeRent}}<br>
+            Fecha de inicio de contrato: <pv-calendar v-model="startDate" showIcon />
+            <br>
+            Fecha de fin de contrato:<pv-calendar v-model="finishDate" showIcon  /> <br>
+            Lugar de recojo y entrega de vehículo: {{carSelected.place}}
           </p>
-          <pv-images src="https://i.postimg.cc/Xqj4zfvb/RT-V-0c7166c16ff74073b65851f7f0b360ed.jpg"  width="400" />
+          <pv-images :src="carSelected.imageurl"  width="400" />
         </template>
       </pv-card>
     </div><br><br>
     <div class="footerpag">
-      <div id="titulo-footer">
-        <label > ¿Cómo desea pagar el Alquiler? </label>
-      </div>
       <br><br>
-      <label style="margin-left: 60px;font-family: 'Poppins',sans-serif;margin-right: 60px">Indicar hora del recojo del vehiculo: </label><br><br>
-      <router-link to="/cash-payment"><pv-button label="Pago en EFECTIVO" style="justify-content: flex-end;background-color: #40019A;margin-right: 60px;margin-left: 60px"/> </router-link>
-      <router-link to="/online-payment"><pv-button label="Pago Online" style="justify-content: flex-end;background-color: #40019A"/><br><br><br></router-link>
+      <label style="margin-left: 60px;font-family: 'Poppins',sans-serif;margin-right: 60px">Indicar hora del recojo del vehiculo: </label> <pv-calendar id="calendar-timeonly" v-model="time" timeOnly show-icon/>
+      <br><br>
+<!--      <pv-button label="Pago en EFECTIVO" style="justify-content: flex-end;background-color: #40019A;margin-right: 60px;margin-left: 60px" @click="createRent"/>
+      <router-link to="/online-payment"><pv-button label="Pago Online" style="justify-content: flex-end;background-color: #40019A"/><br><br><br></router-link>-->
+      <pv-button label="Enviar solicitud de alquiler" style="justify-content: flex-end;background-color: #40019A;margin-right: 60px;margin-left: 60px" @click="createRent"/>
+      <router-link to="/search-car"><pv-button label="Cancelar solicitud" style="justify-content: flex-end;background-color: #40019A"/><br><br><br></router-link>-->
     </div>
   </div>
 </template>
 
 
-
-
-
 <script>
 import UseApiService from "@/services/use-api-services";
 import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
+import GlobalData from "@/services/eventBus";
+import {RentService} from "@/services/rentService";
 export default {
   name: "selection-payment",
   components: {ToolbarBarTenant},
@@ -50,7 +50,35 @@ export default {
     return {
       hour: "",
       useApiService: new UseApiService(),
+      carSelected: JSON.parse(atob(this.$route.query.product)),
+      startDate:new Date(),
+      finishDate:new Date(),
+      requestDate:null,
+      time:new Date()
     };
+  },
+  methods: {
+     createRent(){
+      let rent = {
+          carId: this.carSelected.id,
+        tenantId: GlobalData.getUserId(),
+        startRent: this.startDate,
+        endRent: this.finishDate,
+          timeCollect:this.time.getTime(),
+        ownerId: this.carSelected.userId,
+        automobileId: this.carSelected.id,
+      }
+      console.log(rent);
+
+      new RentService().createRequestRent(rent).then((response) => {
+        if (response.status === 200) {
+          alert ("Solicitud de alquiler enviada");
+        }
+      }).catch((error) => {
+        console.log(error)
+        alert("Error al enviar solicitud de alquiler");
+      });
+    }
   },
 };
 </script>

@@ -21,7 +21,7 @@ import MultiSelect from 'primevue/multiselect';
 import Dropdown from 'primevue/dropdown';
 import Carousel from 'primevue/carousel';
 import RadioButton from "primevue/radiobutton";
-
+import Calendar from "primevue/calendar";
 
 
 
@@ -45,6 +45,6 @@ app.component("pv-multiselect",MultiSelect);
 app.component("pv-dropdown",Dropdown);
 app.component("pv-carousel",Carousel);
 app.component("pv-radiobutton",RadioButton);
-
+app.component("pv-calendar",Calendar);
 app.mount("#app");
 
