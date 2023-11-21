@@ -153,7 +153,7 @@ export default {
          this.userType, this.name, this.lastname, this.address,this.phone).then((response) => {
         if (response.data) {
           GlobalData.setUserId(response.data);
-          this.$router.push("/home-owner");
+          this.$router.push("/login-owner");
         } else {
           alert('invalid user');
         }
