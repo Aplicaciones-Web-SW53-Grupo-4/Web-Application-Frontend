@@ -148,7 +148,7 @@ export default {
       this.security.register(this.username, this.password,
           this.userType, this.name, this.lastname, this.address,this.phone).then((response) => {
         if (response.data) {
-          GlobalData.setUserId(response.data);
+          GlobalData.setUsertenantId(response.data);
           this.$router.push("/login-tenant");
         } else {
           alert('invalid user');

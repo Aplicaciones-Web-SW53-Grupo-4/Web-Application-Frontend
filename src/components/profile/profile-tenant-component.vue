@@ -9,12 +9,12 @@ export default {
   data() {
     return {
       user: {
-        rol: 'Arrendatario',
-        name: 'John Doe',
-        vhal: '1',
-        lastname: 'Quispe Mamani',
-        email: 'johndoe@example.com',
-        phone: '+12 34567890',
+        rol: '',
+        name: '',
+        vhal: '',
+        lastname: '',
+        email: '',
+        phone: '',
         imageUrl: 'https://via.placeholder.com/150',
       },
       userId:""
@@ -22,7 +22,7 @@ export default {
   },
   mounted() {
     console.log("Entró");
-    this.userId = GlobalData.getUserId();
+    this.userId = GlobalData.gettenantId();
     console.log("Userid: ",this.userId);
     new UseApiService().getProfileByUserId(this.userId).then((response) => {
       this.user.name = response.data.name;
@@ -60,12 +60,11 @@ export default {
     <div class="user-details">
       <h1>Perfil de Usuario</h1>
       <div class="user-info">
-        <p><strong>Rol:</strong> {{ user.rol }}</p>
+        <p><strong>Rol:</strong> TENANT</p>
         <p><strong>Nombres:</strong> {{ user.name }}</p>
         <p><strong>Apellidos:</strong> {{ user.lastname }}</p>
         <p><strong>Celular:</strong> {{ user.phone }}</p>
         <p><strong>Correo:</strong> {{ user.email }}</p>
-        <p><strong>Cantidad de vehiculos alquilados:</strong> {{ user.vhal }}</p>
       </div>
       <div class="user-buttons">
         <button @click="editProfile">Actualizar datos</button>
@@ -74,7 +73,7 @@ export default {
     </div>
     <div class="profile-image">
 
-      <img :src="user.imageUrl" alt="Perfil del usuario" @click="openImageInput" /><br>
+      <img :src="['https://via.placeholder.com/150']" alt="Perfil del usuario" @click="openImageInput" /><br>
       <button @click="openImageInput">Cambiar foto de perfil</button>
     </div>
   </div>

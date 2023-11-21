@@ -8,12 +8,20 @@
     <div id="titulo-seccion">
       <label >ALQUILER</label>
     </div>
-    <div class="card">
-      <pv-card class="p-cardcontent" >
-        <template #content>
-          <router-link to="/selection-payment"><pv-button  id="btnprimary" label="ALQUILAR NUEVO AUTO"  /></router-link>
-        </template>
-      </pv-card>
+    <div>
+      <div class="request-list">
+        <div v-for="request in carRequests" :key="request.id" class="request-card">
+          <div class="avatar">
+            <img :src="request.automobile.imageurl" alt="Car Avatar" />
+          </div>
+          <div class="request-details">
+            <h3 style="font-family: 'Arial Black', sans-serif; color: #00BFFF;">{{ request.automobile.brand}} {{request.automobile.model}}</h3>
+            <p> <b>Estado de Solicitud: </b> <div :class="stylesStatusRequests[request.statusRequest]">{{ statusRequest[request.statusRequest] }}</div></p>
+            <p> <b>Propietario:</b> {{ request.owner.name }} {{request.owner.lastname}}</p>
+            <p> <b>Fecha de Solicitud:</b> {{ formatearFecha(new Date(request.dateCreated)) }}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -22,16 +30,44 @@
 <script>
 import UseApiService from "@/services/use-api-services";
 import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.vue";
+import {RentService} from "@/services/rentService";
+import GlobalData from "@/services/eventBus";
 export default {
   name: "rent-tenant-major",
   components: {ToolbarBarTenant},
 
+  mounted() {
+    new RentService(). getRequestsByTenantIdRent(GlobalData.getUserId()).then((response) => {
+      if (response.status === 200) {
+        console.log(response)
+        this.carRequests = response.data;
+        console.log(this.carRequests)
+      }
+    }).catch((error) => {
+      console.log(error)
+      alert("Error al obtener solicitudes de alquiler");
+    });
+  },
   data() {
     return {
-      email: "",
-      password: "",
-      useApiService: new UseApiService(),
+      carRequests: [],
+      statusRequest:["Pendiente","Aceptado","Rechazado"],
+      stylesStatusRequests:["waiting","accepted","rejected"]
     };
+  },
+  methods: {
+    formatearFecha(fecha) {
+      const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // Para usar el formato de 24 horas
+      };
+
+      return new Intl.DateTimeFormat('es-ES', options).format(fecha);
+    }
   },
 };
 
@@ -48,32 +84,48 @@ export default {
   margin-left:20px;
   font-weight: bold;
 }
-.p-cardcontent{
-  width: 30em;
-  height: 33em;
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-  align-content: flex-start;
+.request-list {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-.card{
-  display: flex;
-}
-.p-cardcontent{
-  background-color: white;
-  box-shadow: 3px 4px 4px #14131B;
-  -webkit-justify-content: center;
-}
-#btnprimary{
-  background-color: #40019A;
-  color: white;
-  box-shadow: transparent;
-  border: none;
 
-  margin-top: 150px;
-  align-content: center;
+.request-card {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
 }
-#btnprimary:hover{
-  background-color:#310077;
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.request-details {
+  flex: 1;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 @media all and (max-width: 840px) {
   #titulo-seccion{
