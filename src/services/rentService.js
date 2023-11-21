@@ -11,6 +11,10 @@ export class RentService{
     getRequestsByTenantId(tenantId){
         return axios.get(`${basePath}/api/RequestRent/tenant/${tenantId}`);
     }
+    getRequestsByTenantIdRent(tenantId){
+        return axios.get(`${basePath}/api/RequestRent/tenant/rent/${tenantId}`);
+    }
+
     updateRequestStatusById(id,body){
         return axios.put(`${basePath}/api/RequestRent/${id}`,body);
     }

@@ -77,7 +77,7 @@ export default {
     login() {
       //TODO
       this.security.login(this.username, this.password,this.userType).then((response) => {
-        GlobalData.setUserId(response.data);
+        GlobalData.setUsertenantId(response.data);
         console.log("ID user: ", response);
         this.$router.push("/home-tenant");
       }).catch((error) => {

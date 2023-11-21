@@ -48,7 +48,6 @@ const routes = [
     {path: "/notifications-owner", component: notificationOwner},
     {path: "/selection-payment", component: selectionPaymentCompoment},
     {path: "/request-tenant", component: RequestTenantComponent},
-    { path: "/maintenance-tenant", component: maintenanceTenantComponent},
     {path:"/rental-agreement",component: rentalAgreementComponent},
     { path: "/:pathMatch(.*)*", component: pageNotFound },
 ];
