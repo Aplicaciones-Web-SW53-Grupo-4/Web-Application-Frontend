@@ -11,10 +11,6 @@ import ToolbarBarTenant from "@/components/toolbar/toolbar-bar-tenant-component.
       <div class="welcome-content">
         <h1 class="texto1">Alquila autos</h1>
         <h1 class="texto2">Cercanos facilmente</h1>
-        <div class="location-input">
-          <label for="location" class="location-label">Ubicación:</label>
-          <input type="text" id="location" class="location-field" placeholder="Ingrese su ubicación">
-        </div>
         <div><router-link to="/search-car"><pv-button class="combobox" id="btn" label="BUSCAR UN COCHE" /></router-link></div>
       </div>
     </div>

@@ -66,8 +66,6 @@ export default {
         <p><strong>Correo:</strong> {{ user.email }}</p>
       </div>
       <div class="user-buttons">
-        <button @click="editProfile">Actualizar datos</button>
-        <!--<button @click="editProfile">Cerrar sesión</button>-->
         <router-link to="/login-owner"><pv-button  id="btn" :label="$t('logout')"  /></router-link>
       </div>
     </div>

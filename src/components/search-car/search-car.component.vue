@@ -5,18 +5,8 @@
     <div class=" form-container flex-column flex">
       <h1 class="text1">Busca un auto</h1>
       <div class="field">
-        <label for="firstname1">Departamento</label> <br>
-        <div class="card flex justify-content-center">
-          <pv-dropdown v-model="selectedCity" :options="department" showClear optionLabel="name"
-                       placeholder="Select a Departament"
-                       class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
-        </div>
-        <!--          <label for="firstname1">Departamento</label>-->
-        <!--          <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">-->
-      </div>
-      <div class="field">
 
-        <label for="lastname1">Price</label>
+        <label for="lastname1">Price (S/)</label>
         <input v-model="price" id="lastname1" type="number"
                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
       </div>
@@ -86,37 +76,6 @@
       </div>
     </div>
 
-    <!--
-    Carrousel de productos
-    -->
-    <!--    <div class="mt-7" v-if="!searched">-->
-    <!--      <div class="card_carousel">-->
-    <!--        <pv-carousel :value="products" :numVisible="1" :numScroll="1" :responsiveOptions="responsiveOptions" >-->
-    <!--          <template #item="slotProps">-->
-
-    <!--            <div class="flex flex-column align-items-center ">-->
-    <!--              <div class="align-items-center justify-content-center w-8 " >-->
-    <!--                <img :src="slotProps.data.imageurl" :alt="slotProps.data.brand" class="h-full w-full" />-->
-    <!--              </div>-->
-
-    <!--              <div class=" align-items-center justify-content-center   text-center  ">-->
-    <!--                <h4 class="">BRAND: {{ slotProps.data.brand }}</h4>-->
-    <!--                <h4 class="">PRICE: S/{{ slotProps.data.price }} por día</h4>-->
-    <!--                <h4 class="">MODEL: {{ slotProps.data.model }}</h4>-->
-
-    <!--                <div class="mt-5 flex align-items-center justify-content-center gap-2">-->
-    <!--                  <pv-button icon="pi pi-search" rounded @click="search(slotProps.data)" />-->
-    <!--                  <pv-button icon="pi pi-star-fill" rounded severity="secondary" />-->
-    <!--                </div>-->
-    <!--                <div class="mt-3">-->
-    <!--                  <pv-button  label="Alquilar Vehículo"/>-->
-    <!--                </div>-->
-    <!--              </div>-->
-    <!--            </div>-->
-    <!--          </template>-->
-    <!--        </pv-carousel >-->
-    <!--      </div>-->
-
     <div class="mt-7 flex-wrap flex  col-12 sm:col-12 md:col-12 text-center lg:col-12 xl:col-8" v-if="!searched">
       <div class="flex flex-column align-items-center col-6 sm:col-4 md:col-3 " v-for="product in products">
         <div class="flex align-items-center justify-content-center w-50 h-25">
@@ -149,9 +108,6 @@
             </div>
           </template>
           <template #content>
-            <router-link to="/rental-agreement">
-              <pv-button class="btn" label="Ver contrato de alquiler"/>
-            </router-link>
             <pv-button label="Disponible" severity="secondary" style="margin-left: 0.5em"/>
           </template>
           <template #footer>
@@ -223,14 +179,14 @@ export default {
   data() {
     return {
       value: "",
-      quantity: "",
+      quantity: 0,
       carSelected: {},
       model: "",
       loading: false,
       searched: false,
       selectedCity: null,
       selectedprice: null,
-      selectedtime: null,
+      selectedtime: {name:""},
       time: [
         {name: '1 Día'},
         {name: '2 Día'},
@@ -259,7 +215,7 @@ export default {
       ],
       price: 0,
       profileUser: {},
-      selectedbrand: null,
+      selectedbrand: {code: " ", name: " "},
       brand: [
         {name: 'Toyota', code: 'TO'},
         {name: 'KIA', code: 'kI'},
@@ -332,10 +288,20 @@ export default {
       }
     },
     getAutomobilesByFilter(){
-      new AutomovileService().getAutomobilesByFilter(this.selectedbrand.name,this.price,this.model,
-        this.quantity,this.transmision,this.classvehicules,this.selectedtime).then((response) => {
+      const body = {
+        brand:this.selectedbrand.name,
+        price: this.price,
+        model: this.model,
+        quantitySeat: this.quantity,
+        transmissionType: this.transmision,
+        classType: this.classvehicules,
+        timeRent:this.selectedtime.name
+
+      }
+      console.log("querys para filtro:", body );
+      new AutomovileService().getAutomobilesByFilter(body).then((response) => {
+        console.log("Products: ",response);
         this.products = response.data;
-        console.log("Products: ",response.data);
       });
     },
     getProfileUser(userId) {

@@ -18,6 +18,8 @@
             <h3 style="font-family: 'Arial Black', sans-serif; color: #00BFFF;">{{ request.automobile.brand}} {{request.automobile.model}}</h3>
             <p> <b>Estado de Solicitud: </b> <div :class="stylesStatusRequests[request.statusRequest]">{{ statusRequest[request.statusRequest] }}</div></p>
             <p> <b>Propietario:</b> {{ request.owner.name }} {{request.owner.lastname}}</p>
+            <p> <b>Número de contacto:</b> {{request.owner.phone}}</p>
+            <p> <b>Correo de contacto: </b>{{request.owner.username}}</p>
             <p> <b>Fecha de Solicitud:</b> {{ formatearFecha(new Date(request.dateCreated)) }}</p>
           </div>
         </div>
@@ -39,9 +41,8 @@ export default {
   mounted() {
     new RentService(). getRequestsByTenantIdRent(GlobalData.getUserId()).then((response) => {
       if (response.status === 200) {
-        console.log(response)
+        console.log("Solicitudes de alquiler aceptadas" ,response.data)
         this.carRequests = response.data;
-        console.log(this.carRequests)
       }
     }).catch((error) => {
       console.log(error)

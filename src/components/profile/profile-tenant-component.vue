@@ -67,13 +67,13 @@ export default {
         <p><strong>Correo:</strong> {{ user.email }}</p>
       </div>
       <div class="user-buttons">
-        <button @click="editProfile">Actualizar datos</button>
         <router-link to="/login-tenant"><pv-button  id="btn" :label="$t('logout')"  /></router-link>
       </div>
     </div>
     <div class="profile-image">
 
-      <img :src="['https://via.placeholder.com/150']" alt="Perfil del usuario" @click="openImageInput" /><br>
+      <input type="file" accept="image/*" @change="handleImageChange" style="display: none" ref="imageInput" />
+      <img :src="user.imageUrl" alt="Perfil del usuario" @click="openImageInput" /><br>
       <button @click="openImageInput">Cambiar foto de perfil</button>
     </div>
   </div>

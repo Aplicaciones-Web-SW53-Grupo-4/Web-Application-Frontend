@@ -15,21 +15,7 @@ import FooterComponent from "@/components/footer/footer-component.vue";
         <div><router-link to="/register-car"><pv-button class="combobox" id="btn" label="COMPARTE TU AUTO" /></router-link></div>
       </div>
     </div>
-    <p class="texto3">Notificaciones</p>
-    <div class="notification-section">
-      <div class="notification">
-        <div class="notification-message">Piero Torres Arias envio una solicitud de alquiler del vehículo Toyota Prius</div>
-        <div class="notification-button">
-          <router-link to="/profile-request"><pv-button class="notification-button" label="Ver mensaje" /> </router-link>
-        </div>
-      </div>
-      <div class="notification">
-        <div class="notification-message">Jorge Paredes Cano envio una solicitud de alquiler del vehículo Toyota Prius</div>
-        <div class="notification-button">
-          <pv-button class="notification-button" label="Ver mensaje" />
-        </div>
-      </div>
-      </div>
+
   </div>
   <footer-component></footer-component>
 </template>

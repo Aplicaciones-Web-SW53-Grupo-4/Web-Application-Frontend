@@ -10,11 +10,11 @@ export class AutomovileService{
         console.log(body);
         return axios.post(`${basePath}/api/Automobile/register`,body);
     }
-    getAutomobilesByFilter(brand, price, model, quantitySeat,transmissionType,classType,timeRent){
-        const params = {
-            brand, price, model, quantitySeat,transmissionType,classType,timeRent};
-        console.log(params);
-        return axios.get(`${basePath}/api/Automobile/search-car/getfilter`,params);
+    getAutomobilesByFilter(query){
+        const queryString = new URLSearchParams(query).toString();
+        const ruta = `${basePath}/api/Automobile/search-car/getfilter?${queryString}`;
+        console.log("Ruta",ruta);
+        return axios.get(ruta);
     }
 
     getAutomobilesByOwnerId(ownerId){

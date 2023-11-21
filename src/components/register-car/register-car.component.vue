@@ -79,16 +79,12 @@
     </div>
 
     <div >
+
       <form ref="form">
+        <label>Sube la imagen de tu vehículo aquí: <br></label>
         <input type="file" @change="handleImageChange" multiple tabindex="-1">
       </form>
 
-
-      <RouterLink to="/generate-contract">
-      <div class = "btn flex btn-contract flex justify-content-center align-items-center">
-        Crear contrato de alquiler
-      </div>
-      </RouterLink>
     </div>
 
   </div>
@@ -161,6 +157,8 @@ export default{
     },
     getregister() {
       //TOD
+      console.log("Imagen de despues de enviar: ", this.imageurl);
+      console.log("user id for register car: ", this.userId);
       this.security.getregister(this.brand,this.price,this.model,this.color,this.quantitySeat,parseInt(this.transmissionType),
       parseInt(this.classType),this.place,this.timeRent,this.userId,   this.imageurl   ).then((response) => {
         if (response.data) {
