@@ -13,12 +13,10 @@
       <div class="field">
         <label for="firstname1">Time the rent</label> <br>
         <div class="card flex justify-content-center">
-          <pv-dropdown v-model="selectedtime" :options="time" showClear optionLabel="name"
-                       placeholder="Select a Time Rent"
-                       class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+          <input v-model="selectedtime" id="lastname1" type="text"
+                 class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
         </div>
-        <!--          <label for="firstname1">Tiempo de alquiler (mes o dia)</label>-->
-        <!--          <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">-->
+
       </div>
       <div class="field">
         <label for="firstname1">Marca</label> <br>
@@ -61,15 +59,22 @@
 
       <div class="field">
         <label for="lastname1">Class Vehicule</label>
-        <input v-model="classvehicules" id="lastname1" type="number"
-               class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        <div class="card flex justify-content-center">
+          <pv-dropdown v-model="classvehicules" :options="classvehiculeslist" showClear optionLabel="name"
+                       placeholder="Select a class vehicle"
+                       class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+        </div>
+
       </div>
 
       <div class="field">
-
         <label for="firstname1">Transmision</label>
-        <input v-model="transmision" id="firstname1" type="number"
-               class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        <div class="card flex justify-content-center">
+          <pv-dropdown v-model="transmision" :options="transmisionList" showClear optionLabel="name"
+
+                       placeholder="Select a class vehicle"
+                       class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+        </div>
         <pv-button class="btn" type="button" label="Search" icon="pi pi-search" :loading="loading"
                    @click="getAutomobilesByFilter"></pv-button>
 
@@ -186,7 +191,7 @@ export default {
       searched: false,
       selectedCity: null,
       selectedprice: null,
-      selectedtime: {name:""},
+      selectedtime: null,
       time: [
         {name: '1 Día'},
         {name: '2 Día'},
@@ -202,6 +207,15 @@ export default {
         {name: '2 MESES'},
         {name: '3 MESES'},
       ],
+      transmisionList: [
+        {name: 'AUTOMATICO', value: 0},
+        {name: 'MECANICO', value: 1}
+      ],
+      classvehiculeslist: [
+        {name:"ECONOMICO", value:0 },
+        {name:"NORMAL", value:1},
+        {name:"PREMIUM", value:2},
+      ],
       department: [
         {name: 'Lima'},
         {name: 'Ica'},
@@ -215,7 +229,7 @@ export default {
       ],
       price: 0,
       profileUser: {},
-      selectedbrand: {code: " ", name: " "},
+      selectedbrand: {code: " ", name: ""},
       brand: [
         {name: 'Toyota', code: 'TO'},
         {name: 'KIA', code: 'kI'},
@@ -226,9 +240,11 @@ export default {
 
       ],
 
-      classvehicules: 0,
+      classvehicules: {name:"AUTOMATICO",value:0},
 
-      transmision: 0,
+
+      transmision: {name:"ECONOMICO",value:0},
+
       products: ref([]),
       responsiveOptions: [
         {
@@ -293,10 +309,9 @@ export default {
         price: this.price,
         model: this.model,
         quantitySeat: this.quantity,
-        transmissionType: this.transmision,
-        classType: this.classvehicules,
-        timeRent:this.selectedtime.name
-
+        transmissionType: this.transmision.value,
+        classType: this.classvehicules.value,
+        timeRent:this.selectedtime
       }
       console.log("querys para filtro:", body );
       new AutomovileService().getAutomobilesByFilter(body).then((response) => {
