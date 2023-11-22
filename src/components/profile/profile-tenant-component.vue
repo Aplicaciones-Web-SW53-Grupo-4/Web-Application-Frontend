@@ -60,7 +60,7 @@ export default {
     <div class="user-details">
       <h1>Perfil de Usuario</h1>
       <div class="user-info">
-        <p><strong>Rol:</strong> TENANT</p>
+        <p><strong>Rol:</strong>Arrendatario</p>
         <p><strong>Nombres:</strong> {{ user.name }}</p>
         <p><strong>Apellidos:</strong> {{ user.lastname }}</p>
         <p><strong>Celular:</strong> {{ user.phone }}</p>
@@ -106,6 +106,7 @@ export default {
 .user-info {
   flex: 1;
   margin-bottom: 20px;
+  font-family: 'Poppins',sans-serif;
 }
 
 .user-info p {

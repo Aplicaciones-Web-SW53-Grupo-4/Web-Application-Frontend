@@ -42,8 +42,6 @@
             </template>
           </pv-dropdown>
         </div>
-        <!--          <label for="lastname1">Marca</label>-->
-        <!--          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">-->
       </div>
       <div class="field">
         <label for="firstname1">Modelo</label>

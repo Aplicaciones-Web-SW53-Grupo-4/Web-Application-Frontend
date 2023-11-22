@@ -13,8 +13,7 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-// Especifica el bucket de almacenamiento manualmente
-const storageBucketUrl = 'gs://automovile-unit.appspot.com';  // Reemplaza con la URL de tu bucket
+const storageBucketUrl = 'gs://automovile-unit.appspot.com';
 const storage = getStorage(app, storageBucketUrl);
 
 export default storage;

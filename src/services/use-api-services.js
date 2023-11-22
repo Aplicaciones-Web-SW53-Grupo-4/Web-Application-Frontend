@@ -22,7 +22,6 @@ class UseApiService {
         return http.delete("users/" + id);
     }
 
-
     getProfileByUserId(id) {
         return http.get(`/Profile/${id}`)
     }
