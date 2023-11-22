@@ -110,12 +110,14 @@ import FooterComponent from "@/components/footer/footer-component.vue";
   font-size: 64px ;
   margin-top:10px;
   color: #40019A;
+  font-family: 'Poppins',sans-serif;
   margin-bottom: 10px;
 }
 .texto2{
   font-weight: bold;
   font-size: 64px ;
   margin-top:10px;
+  font-family: 'Poppins',sans-serif;
   margin-bottom: 20px;
 }
 
